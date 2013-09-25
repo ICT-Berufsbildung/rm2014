@@ -8,7 +8,7 @@
 
 try {
 	require_once('./includes/configuration/main.php');
-
+    // test
 	require(PATH_VIEW.'design.php');
 }
 catch (PDOException $e) {
