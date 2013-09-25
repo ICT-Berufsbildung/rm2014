@@ -209,9 +209,324 @@ This page is used to display the thread selected: the name and the tags as well 
 </div>
 
                 </section>
-                <section class="column width4 first tasks">
-                    <h2>Tasks</h2>
-                    <p>TODO</p>
+                <section class=" width4 first">
+
+<h2>Tasks</h2>
+
+<hr/>
+
+<div class="column unitx1 first">
+
+<h3>Task 1</h3>
+
+</div>
+<div class="column unitx3">
+
+<p>
+You must design two tables: the comment table and the associative table between 
+thread and tag (a thread can have multiple tags and a tag can have multiple 
+threads).
+</p>
+
+<p>
+A comment is associated with a thread (the first comment is the question itself) 
+and consists of the name and email of its author, a rating represented by a 
+number, and the content of the comment. 
+</p>
+
+</div>
+
+<div class="column unitx2">
+</div>
+
+<div class="column unitx2">
+
+<label>
+<input type="checkbox" name="" value="">
+The tables are created
+</label>
+
+<label>
+<input type="checkbox" name="" value="">
+The links between them are made
+</label>
+
+<label>
+<input type="checkbox" name="" value="">
+All needed field are implemented and correctly typed
+</label>
+
+<label>
+<input type="checkbox" name="" value="">
+Primary key and auto-increment status are activated
+</label>
+
+</div>
+
+<hr/>
+
+<div class="column unitx1 first">
+
+<h3>Task 2</h3>
+
+</div>
+<div class="column unitx3">
+
+<p>
+Show the “hottest” thread (with the maximum amount of rating) on the home page
+ as the sketch provided in the previous chapter.
+</p>
+
+</div>
+
+<div class="column unitx2">
+</div>
+
+<div class="column unitx2">
+
+<label>
+<input type="checkbox" name="" value="">
+A section is created in HTML to show the hottest thread
+</label>
+
+<label>
+<input type="checkbox" name="" value="">
+The hottest thread is retrieved with the maximum amount of rating
+</label>
+
+<label>
+<input type="checkbox" name="" value="">
+The thread name is shown and a link is made to go to the thread detail
+</label>
+
+<label>
+<input type="checkbox" name="" value="">
+The result respect the sketch
+</label>
+
+</div>
+
+<hr/>
+
+<div class="column unitx1 first">
+
+<h3>Task 3</h3>
+
+</div>
+<div class="column unitx3">
+
+<p>
+Implement the comment system on a thread according to the description in part 
+2 and following site architecture. See the sketches for more details.
+</p>
+
+<p>
+You must check the format of the email address.
+</p>
+
+<p>
+You need to handle errors that may occur (blank, invalid email, etc.).
+</p>
+
+</div>
+
+<div class="column unitx2">
+</div>
+
+<div class="column unitx2">
+
+<label>
+<input type="checkbox" name="" value="">
+The thread detail are shown (thread name)
+</label>
+
+<label>
+<input type="checkbox" name="" value="">
+The comments of the thread are shown 
+(content and author, with the first comment as the question itself)
+</label>
+
+<label>
+<input type="checkbox" name="" value="">
+A form is shown to add a comment 
+(with name, email and content field)
+</label>
+
+<label>
+<input type="checkbox" name="" value="">
+The form to add a comment is working
+</label>
+
+<label>
+<input type="checkbox" name="" value="">
+Errors are handled (blank, email format, etc.)
+</label>
+
+<label>
+<input type="checkbox" name="" value="">
+The data are secured
+</label>
+
+<label>
+<input type="checkbox" name="" value="">
+The result respect the sketch
+</label>
+
+</div>
+
+<hr/>
+
+<div class="column unitx1 first">
+
+<h3>Task 4</h3>
+
+</div>
+<div class="column unitx3">
+
+<p>
+Implement the rating system. Each comment can be rated up or down by the user. 
+The rating sum is shown below the comment with rating link +1 and -1. Show 
+sketches for more details.
+</p>
+
+<p>
+Bonus: The user can only vote once for each comment (sessions)
+</p>
+
+<p>
+Bonus: Ajax!
+</p>
+
+<p>
+Note: Don’t waste time, make it simple and functional.
+</p>
+
+</div>
+
+<div class="column unitx2">
+</div>
+
+<div class="column unitx2">
+
+<label>
+<input type="checkbox" name="" value="">
+The rating is shown for each comment
+</label>
+
+<label>
+<input type="checkbox" name="" value="">
+User can vote up or down for a comment
+</label>
+
+<label>
+<input type="checkbox" name="" value="">
+Bonus : The user can only vote once for each comment
+</label>
+
+<label>
+<input type="checkbox" name="" value="">
+Bonus : Ajax
+</label>
+
+<label>
+<input type="checkbox" name="" value="">
+The result respect the sketch
+</label>
+
+</div>
+
+<hr/>
+
+<div class="column unitx1 first">
+
+<h3>Task 5</h3>
+
+</div>
+<div class="column unitx3">
+
+<p>
+Create a new form to assign tags to the thread. 
+</p>
+
+<p>
+When adding a tag, check for it in the database, if it exists, link it to the 
+thread, if not create the tag and link it directly.
+</p>
+
+<p>
+Show tag list below the thread name, using the bootstrap “label” CSS class 
+(search in documentation).
+</p>
+
+</div>
+
+<div class="column unitx2">
+</div>
+
+<div class="column unitx2">
+
+<label>
+<input type="checkbox" name="" value="">
+The tag list is shown
+</label>
+
+<label>
+<input type="checkbox" name="" value="">
+A form to add a tag is shown
+</label>
+
+<label>
+<input type="checkbox" name="" value="">
+The form to add a tag is working 
+(Creates tag if it does not exist, link tag to thread in all cases)
+</label>
+
+<label>
+<input type="checkbox" name="" value="">
+The result respect the sketch
+</label>
+
+</div>
+
+<hr/>
+
+<div class="column unitx1 first">
+
+<h3>Task 6</h3>
+
+</div>
+<div class="column unitx3">
+
+<p>
+Create, on the page listing the different threads, an option to search by keywords. See the sketches for more details.
+</p>
+
+</div>
+
+<div class="column unitx2">
+</div>
+
+<div class="column unitx2">
+
+<label>
+<input type="checkbox" name="" value="">
+The search form is shown
+</label>
+
+<label>
+<input type="checkbox" name="" value="">
+The form to add a tag is working
+</label>
+
+<label>
+<input type="checkbox" name="" value="">
+The result respect the sketch
+</label>
+
+</div>
+
+<hr/>
+
                 </section>
             </div>
         </div>
