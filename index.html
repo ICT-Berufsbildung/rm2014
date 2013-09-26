@@ -68,16 +68,16 @@ the site running without errors.
 <h3>Rules</h3>
 
 <p>
-To perform the tasks required, you must observe the following rules:
+To perform the tasks, the following rules apply:
 </p>
 
 <ul>
-<li>All Internet access is prohibited during the competition ;</li>
+<li>Internet access is not allowed during the whole competition ;</li>
 <li>The use of any communication is prohibited (mobile, tablet, etc.);</li>
-<li>No memory means is permitted (USB, etc.);</li>
-<li>Dialogue with other candidates is prohibited ;</li>
-<li>No headset, headphones or other sound device is tolerated ;</li>
-<li>No personal notes can be accessed nor be near your place of work ;</li>
+<li>No external storage can be used (USB, etc.);</li>
+<li>Do not talk with other candidates ;</li>
+<li>No sound devices (headset, headphones, etc.) can be used ;</li>
+<li>No personal notes can be used ;</li>
 <li>A blank notebook and a pen are provided.</li>
 </ul>
 
@@ -95,11 +95,11 @@ involved in the evaluation.
 </p>
 
 <ul>
-<li>All written code must be properly formatted, indented and commented ;</li>
-<li>Each function or method must be documented ;</li>
-<li>The generated HTML and CSS must comply with W3C standards ;</li>
-<li>SQL queries must be protected from any possible isnjections ;</li>
-<li>No error should occur (the level of error reporting is set to E_ALL).</li>
+<li>All written code is properly formatted and indented ;</li>
+<li>Each method is documented ;</li>
+<li>The generated HTML and CSS complies with W3C standards ;</li>
+<li>SQL queries are protected from any possible injections ;</li>
+<li>No error occur (the level of error reporting is set to E_ALL).</li>
 </ul>
 
 </div>
@@ -108,14 +108,14 @@ involved in the evaluation.
 <h3>Deliverables</h3>
 
 <p>
-All deliverables must be submitted in zip file named 
-"WebDesign_Name_Surname.zip" and it must be placed at the folder location 
-indicated by the supervisor. The deliverables are site files as well as a 
-"dump" of the database.
+All deliverables are submitted in zip file named 
+"WebDesign_Name_Surname.zip" and it is placed at the folder location 
+indicated by the supervisor. The deliverables include the site files 
+as well as a "dump" of the database.
 </p>
 
 <p>
-At the end of the competition you must also submit all documents and notes to 
+At the end of the competition you also submit all documents and notes to 
 the supervisor.
 </p>
 
@@ -142,6 +142,7 @@ The tools available to perform the tasks in this document are:
 <li>Mozilla Firefox with Firebug</li>
 <li>Google Chrome</li>
 <li>Internet Explorer</li>
+<li><b>TBD: JAVA</b></li>
 </ul>
 
 <h3>Documentation</h3>
@@ -155,6 +156,7 @@ To perform the tasks of this project, you have the following manuals:
 <li>MySQL</li>
 <li>jQuery</li>
 <li>Bootstrap</li>
+<li><b>TBD: JAVA</b></li>
 </ul>
 
 <p>Version 0.1</p>
@@ -171,14 +173,14 @@ To perform the tasks of this project, you have the following manuals:
 <h3>Introduction</h3>
 
 <p>
-One day, one night, a manager had an idea: create a website to help people 
-in IT technologies. The site must allow users to ask questions through 
-threads and users can respond and vote for the best answer.
+One day a manager had the idea to create a website to help people 
+in IT technologies. The site allows users to ask questions through 
+threads. Others can respond to the questions and vote for the best answers.
 </p>
 
 <p>
 Because information technologies are very diverse, the manager wants to 
-assign to each thread some tags to find and classify them.
+assign tags to each thread to classify and easily find them.
 </p>
 
 <h3>Pages</h3>
@@ -189,16 +191,16 @@ Once the site is completed, it will consist of the following pages:
 
 <ul>
 <li>
-Home<br/>
+<a href="templates/home.html">Home</a><br/>
 This page contains the welcome message from the manager for visitors and highlights the “hottest” thread of the website.
 </li>
 <li>
-Thread list<br/>
-This page will provide thread list created by users. The search by name may also be possible. Each item in the list consists of the thread name as well as the first characters of the question.
+<a href="templates/thread_list.html">Thread list</a><br/>
+This page provides a list containing threads created by users. The search by name may also be possible. Each item in the list consists of the thread name as well as the first characters of the question.
 </li>
 <li>
-Thread details<br/>
-This page is used to display the thread selected: the name and the tags as well as comments left by users with a system rating for each one. This page must contain a form to leave a comment. 
+<a href="templates/thread_detail.html">Thread details</a><br/>
+This page is used to display the thread selected, including the name, the tags, comments left by users and a system rating for each one. The page also contains a form to leave a comment. 
 </li>
 </ul>
 
@@ -211,28 +213,37 @@ This page is used to display the thread selected: the name and the tags as well 
                 </section>
                 <section class=" width4 first">
 
-<h2>Tasks</h2>
+<div class="column unitx1 first">
+    <h2>Tasks</h2>
+</div>
+<div class="column unitx3"></div>
+<div class="column unitx2"></div>
+<div class="column unitx2 last">
+    <h2>Marking Schema</h2>
+    For each achieved you get one point
+</div>
 
 <hr/>
 
 <div class="column unitx1 first">
 
-<h3>Task 1</h3>
+<h3 id="task1">Task 1</h3>
 
 </div>
 <div class="column unitx3">
 
 <p>
-You must design two tables: the comment table and the associative table between 
-thread and tag (a thread can have multiple tags and a tag can have multiple 
-threads).
+Design two tables: the comment table and the associative table between 
+thread and tag.
 </p>
 
-<p>
-A comment is associated with a thread (the first comment is the question itself) 
-and consists of the name and email of its author, a rating represented by a 
-number, and the content of the comment. 
-</p>
+<ul>
+    <li>A thread can have multiple tags</li>
+    <li>A tag can have multiple threads</li>
+    <li>A comment is associated with a thread</li>
+    <li>The first comment is the question itself</li>
+    <li>Comment fields: name and email of the author, a rating represented by a number, and the content of the comment</li>
+</ul>
 
 </div>
 
@@ -254,7 +265,7 @@ The links between them are made
 
 <label>
 <input type="checkbox" name="" value="">
-All needed field are implemented and correctly typed
+All needed fields are implemented and correctly typed
 </label>
 
 <label>
@@ -268,19 +279,20 @@ Primary key and auto-increment status are activated
 
 <div class="column unitx1 first">
 
-<h3>Task 2</h3>
+<h3 id="task2">Task 2</h3>
 
 </div>
-<div class="column unitx3">
+<div class="column unitx5">
 
 <p>
-Show the “hottest” thread (with the maximum amount of rating) on the home page
- as the sketch provided in the previous chapter.
+Read the “hottest” thread from the database and display it on the <a href="templates/home.html">home page</a>.
 </p>
 
-</div>
+<ul>
+    <li>The thread with the highest rating total is displayed</li>
+    <li>Use the template included in the <a href="templates/home.html">home page</a></li>
+</ul>
 
-<div class="column unitx2">
 </div>
 
 <div class="column unitx2">
@@ -311,40 +323,43 @@ The result respect the sketch
 
 <div class="column unitx1 first">
 
-<h3>Task 3</h3>
+<h3 id="task3">Task 3</h3>
 
 </div>
-<div class="column unitx3">
+<div class="column unitx5">
 
 <p>
-Implement the comment system on a thread according to the description in part 
-2 and following site architecture. See the sketches for more details.
+Implement the comment system on a thread according to the description in part 2.
 </p>
 
-<p>
-You must check the format of the email address.
-</p>
+<p><b>TODO: Put Part 2 description here?</b></p>
+<p><b>TODO: Description and Rating Schema for Thread List?</b></p>
 
-<p>
-You need to handle errors that may occur (blank, invalid email, etc.).
-</p>
+<ul>
+    <li>The list is shown on the <a href="templates/thread_list.html">thread list page</a></li>
+    <li>The detail is shown on the <a href="templates/thread_detail.html">thread detail page</a></li>
+    <li>Check the format of the email address.</li>
+    <li>Handle errors that may occur (blank, invalid email, etc.).</li>
+</ul>
 
-</div>
 
-<div class="column unitx2">
 </div>
 
 <div class="column unitx2">
 
 <label>
 <input type="checkbox" name="" value="">
-The thread detail are shown (thread name)
+The thread detail is shown (thread name, e-mail, comment)
 </label>
 
 <label>
 <input type="checkbox" name="" value="">
 The comments of the thread are shown 
-(content and author, with the first comment as the question itself)
+</label>
+
+<label>
+<input type="checkbox" name="" value="">
+The content and author is shown for each comment
 </label>
 
 <label>
@@ -355,7 +370,7 @@ A form is shown to add a comment
 
 <label>
 <input type="checkbox" name="" value="">
-The form to add a comment is working
+The form to add a comment works
 </label>
 
 <label>
@@ -365,12 +380,12 @@ Errors are handled (blank, email format, etc.)
 
 <label>
 <input type="checkbox" name="" value="">
-The data are secured
+The data is secured
 </label>
 
 <label>
 <input type="checkbox" name="" value="">
-The result respect the sketch
+The prepared template is used (<b>TODO: Template?</b>)
 </label>
 
 </div>
@@ -379,10 +394,10 @@ The result respect the sketch
 
 <div class="column unitx1 first">
 
-<h3>Task 4</h3>
+<h3 id="task4">Task 4</h3>
 
 </div>
-<div class="column unitx3">
+<div class="column unitx5">
 
 <p>
 Implement the rating system. Each comment can be rated up or down by the user. 
@@ -390,13 +405,12 @@ The rating sum is shown below the comment with rating link +1 and -1. Show
 sketches for more details.
 </p>
 
-<p>
-Bonus: The user can only vote once for each comment (sessions)
-</p>
-
-<p>
-Bonus: Ajax!
-</p>
+<ul>
+    <li>Implement the rating system on the <a href="templates/thread_detail.html">thread detail page</a></li>
+    <li>You have to finish the task 3 before you can start with this task.</li>
+    <li><b>Bonus 1:</b> The user can only vote once for each comment (sessions)</li>
+    <li><b>Bonus 2:</b> Ajax!</li>
+</ul>
 
 <p>
 Note: Don’t waste time, make it simple and functional.
@@ -404,8 +418,6 @@ Note: Don’t waste time, make it simple and functional.
 
 </div>
 
-<div class="column unitx2">
-</div>
 
 <div class="column unitx2">
 
@@ -421,70 +433,17 @@ User can vote up or down for a comment
 
 <label>
 <input type="checkbox" name="" value="">
-Bonus : The user can only vote once for each comment
+<b>Bonus 1:</b> The user can only vote once for each comment
 </label>
 
 <label>
 <input type="checkbox" name="" value="">
-Bonus : Ajax
+<b>Bonus 2:</b> Ajax
 </label>
 
 <label>
 <input type="checkbox" name="" value="">
-The result respect the sketch
-</label>
-
-</div>
-
-<hr/>
-
-<div class="column unitx1 first">
-
-<h3>Task 5</h3>
-
-</div>
-<div class="column unitx3">
-
-<p>
-Create a new form to assign tags to the thread. 
-</p>
-
-<p>
-When adding a tag, check for it in the database, if it exists, link it to the 
-thread, if not create the tag and link it directly.
-</p>
-
-<p>
-Show tag list below the thread name, using the bootstrap “label” CSS class 
-(search in documentation).
-</p>
-
-</div>
-
-<div class="column unitx2">
-</div>
-
-<div class="column unitx2">
-
-<label>
-<input type="checkbox" name="" value="">
-The tag list is shown
-</label>
-
-<label>
-<input type="checkbox" name="" value="">
-A form to add a tag is shown
-</label>
-
-<label>
-<input type="checkbox" name="" value="">
-The form to add a tag is working 
-(Creates tag if it does not exist, link tag to thread in all cases)
-</label>
-
-<label>
-<input type="checkbox" name="" value="">
-The result respect the sketch
+The template on the thread detail page is used (<b>TODO: Template?</b>)
 </label>
 
 </div>
@@ -493,35 +452,96 @@ The result respect the sketch
 
 <div class="column unitx1 first">
 
-<h3>Task 6</h3>
+<h3 id="task5">Task 5</h3>
 
 </div>
-<div class="column unitx3">
+<div class="column unitx5">
 
 <p>
-Create, on the page listing the different threads, an option to search by keywords. See the sketches for more details.
+Create a form which allows to assign tags to a thread on the 
+<a href="templates/thread_detail.html">tread detail page</a>. 
+Show the tag list below the thread name.
+</p>
+
+<ul>
+    <li>
+        Check if the tag already exists in the database when adding a new one:
+        <br />If it exists, link the tag to the thread.
+        <br />If not, create the new tag and link it to the thread
+    </li>
+    <li>Use the bootstrap “label” CSS class (search in documentation) for the tags displayed</li>
+    <li>Alert and success message examples you can find in the <a href="templates/design.html">design page</a></li>
+</ul>
+
+</div>
+
+<div class="column unitx2">
+
+<label>
+<input type="checkbox" name="" value="">
+The tag form is displayed and works
+</label>
+
+
+<label>
+<input type="checkbox" name="" value="">
+Add Tag: A new tag is added in the database when it does not exist (no duplicates)
+</label>
+
+<label>
+<input type="checkbox" name="" value="">
+Add Tag: Tags are connected to the thread in the database n:m relation table
+</label>
+
+<label>
+<input type="checkbox" name="" value="">
+The tag list is shown underneath the thread name
+</label>
+
+<label>
+<input type="checkbox" name="" value="">
+The bootstrap CSS "label" Class is used for the tags displayed
+</label>
+
+
+<label>
+<input type="checkbox" name="" value="">
+The template on the thread detail page is used
+</label>
+
+</div>
+
+<hr/>
+
+<div class="column unitx1 first">
+
+<h3 id="task6">Task 6</h3>
+
+</div>
+<div class="column unitx5">
+
+<p>
+Create an option to search by keywords on the 
+<a href="templates/thread_list.html">thread list page</a>.
 </p>
 
 </div>
 
 <div class="column unitx2">
-</div>
-
-<div class="column unitx2">
 
 <label>
 <input type="checkbox" name="" value="">
-The search form is shown
+The search form is displayed and works
 </label>
 
 <label>
 <input type="checkbox" name="" value="">
-The form to add a tag is working
+The keywords search the thread name and comment
 </label>
 
 <label>
 <input type="checkbox" name="" value="">
-The result respect the sketch
+The results are filtered by keyword on the <a href="templates/thread_list.html">tag list page</a>
 </label>
 
 </div>
