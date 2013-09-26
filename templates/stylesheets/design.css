@@ -1,97 +1,97 @@
 /**
- *	ICT Championships 2014
- *	WebDesign
+ *    ICT Championships 2014
+ *    WebDesign
  *
- *	Main design
+ *    Main design
  */
 
 html, body {
-	font-family: 'Trebuchet MS';
-	background-color: #efefef;
-	text-align: justify;
-	font-size: 0.9em;
+    font-family: 'Trebuchet MS';
+    background-color: #efefef;
+    text-align: justify;
+    font-size: 0.9em;
 }
 
 .clear {
-	clear: both;
-	border: 0;
-	width: 0;
-	height: 0;
-	margin: 0;
-	padding: 0;
+    clear: both;
+    border: 0;
+    width: 0;
+    height: 0;
+    margin: 0;
+    padding: 0;
 }
 
 .center {
-	text-align: center;
+    text-align: center;
 }
 
 header {
-	background-color: #383d46;
-	color: #ffffff;
+    background-color: #383d46;
+    color: #ffffff;
 }
 
 header div {
-	width: 900px;
-	margin: 0px auto;
+    width: 900px;
+    margin: 0px auto;
 }
 
 header nav {
-	border-bottom: 1px solid #606877;
+    border-bottom: 1px solid #606877;
 }
 
 header nav a {
-	padding-top: -1px;
-	text-align: center;
-	padding-top: 15px;
-	color: white;
-	width: 170px;
-	display: block;
-	float: left;
-	height: 32px;
-	border-top: 1px solid #606877;
-	border-bottom: 1px solid #606877;
+    padding-top: -1px;
+    text-align: center;
+    padding-top: 15px;
+    color: white;
+    width: 170px;
+    display: block;
+    float: left;
+    height: 32px;
+    border-top: 1px solid #606877;
+    border-bottom: 1px solid #606877;
 }
 
 header nav a:hover,
 header nav a.active {
-	color: white;
-	text-decoration: none;
-	border-top: 1px solid #0081B7;
-	background: linear-gradient(
-		top,
-		#2F4858,
-		#363F4A
-	);
-	background: -webkit-gradient(
-		linear,
-		left top, left bottom,
-		from(#2F4858),
-		to(#363F4A)
-	);
+    color: white;
+    text-decoration: none;
+    border-top: 1px solid #0081B7;
+    background: linear-gradient(
+        top,
+        #2F4858,
+        #363F4A
+    );
+    background: -webkit-gradient(
+        linear,
+        left top, left bottom,
+        from(#2F4858),
+        to(#363F4A)
+    );
 }
 
 #main .alert {
-	width: 880px;
-	padding: 10px;
-	margin: 10px auto;
+    width: 880px;
+    padding: 10px;
+    margin: 10px auto;
 }
 
 section {
-	border-radius: 5px;
-	border-bottom: 4px solid #C9C9C9;
-	background-color: white;
-	margin: 20px auto;
-	padding: 10px;
-	width: 880px;
+    border-radius: 5px;
+    border-bottom: 4px solid #C9C9C9;
+    background-color: white;
+    margin: 20px auto;
+    padding: 10px;
+    width: 880px;
 }
 
-h1 {
-	color: #0075a6;
-	border-bottom: 1px solid #0075a6;
-	font-size: 1.5em;
-	margin-top: 0.2em;
+h1, h2 {
+    color: #0075a6;
+    border-bottom: 1px solid #0075a6;
+    font-size: 1.5em;
+    margin-top: 0.2em;
 }
 
 footer {
-	text-align: center;
+    text-align: center;
 }
