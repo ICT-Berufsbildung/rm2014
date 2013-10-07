@@ -156,15 +156,15 @@ The tools available to perform the tasks in this document are:
 <h3>Documentation</h3>
 
 <p>
-To perform the tasks of this project, you have the following manuals:
+To perform the tasks of this project, you are given the following manuals:
 </p>
 
 <ul>
 <li>PHP</li>
+<li>Java</li>
 <li>MySQL</li>
 <li>jQuery</li>
 <li>Bootstrap</li>
-<li><b>TBD: JAVA</b></li>
 </ul>
 
 <p>Version 0.1</p>
@@ -247,7 +247,7 @@ thread and tag.
     <li>A tag can have multiple threads</li>
     <li>A comment is associated with a thread</li>
     <li>The first comment is the question itself</li>
-    <li>Comment fields: name and email of the author, a rating represented by a number, and the content of the comment</li>
+    <li>Comment fields: name and email of the author, a rating (up and down) represented by a number, and the content of the comment</li>
 </ul>
 
 </div>
@@ -260,12 +260,12 @@ thread and tag.
 
 <label>
 <input type="checkbox" name="" value="">
-The tables are created
+The two tables are created
 </label>
 
 <label>
 <input type="checkbox" name="" value="">
-The links between them are made
+The relationships between the tables are made and correct
 </label>
 
 <label>
@@ -294,7 +294,7 @@ Read the “hottest” thread from the database and display it on the <a href="t
 </p>
 
 <ul>
-    <li>The thread with the highest rating total is displayed</li>
+    <li>The thread with the highest rating total is displayed (up minus down)</li>
     <li>Use the template included in the <a href="templates/home.html">home page</a></li>
 </ul>
 
@@ -304,22 +304,27 @@ Read the “hottest” thread from the database and display it on the <a href="t
 
 <label>
 <input type="checkbox" name="" value="">
-A section is created in HTML to show the hottest thread
+The section shows the hottest thread read from the database
 </label>
 
 <label>
 <input type="checkbox" name="" value="">
-The hottest thread is retrieved with the maximum amount of rating
+The hottest thread is selected by the maximum total rating
 </label>
 
 <label>
 <input type="checkbox" name="" value="">
-The thread name is shown and a link is made to go to the thread detail
+The thread name, rating and comment is shown
 </label>
 
 <label>
 <input type="checkbox" name="" value="">
-The result respect the sketch
+Links are made to go to the thread detail (thread title and read more link)
+</label>
+
+<label>
+<input type="checkbox" name="" value="">
+The prepared <a href="templates/home.html">home page template</a> is used
 </label>
 
 </div>
@@ -334,27 +339,94 @@ The result respect the sketch
 <div class="column unitx5">
 
 <p>
-Implement the comment system on a thread according to the description in part 2.
+Implement the comment system on a thread according to the description in <a href="#task1">Task 1</a>.
 </p>
 
-<p><b>TODO: Put Part 2 description here?</b></p>
-<p><b>TODO: Description and Rating Schema for Thread List?</b></p>
-
 <ul>
-    <li>The list is shown on the <a href="templates/thread_list.html">thread list page</a></li>
-    <li>The detail is shown on the <a href="templates/thread_detail.html">thread detail page</a></li>
-    <li>Check the format of the email address.</li>
-    <li>Handle errors that may occur (blank, invalid email, etc.).</li>
+    <li>
+        The list is shown on the <a href="templates/thread_list.html">thread list page</a>
+        <ul>
+            <li>Each thread comment is cropped to a maximum of 200 chars</li>
+        </ul>
+    </li>
+    <li>
+        The detail is shown on the <a href="templates/thread_detail.html">thread detail page</a>
+        <ul>
+            <li>The first comment is the thread</li>
+            <li>All comments assigned to a thread are shown</li>
+        </ul>
+    </li>
+    <li>
+        A form o add a thread is shown on the <a href="templates/thread_list.html">thread list page</a>
+        <ul>
+            <li>Add the form with the fields name, email, thread name, comment</li>
+            <li>Check the format of the email address.</li>
+            <li>Handle errors that may occur (blank, invalid email, etc.).</li>
+        </ul>
+    </li>
+    <li>
+        A form o add a comment to a thread is shown on the <a href="templates/thread_detail.html">thread detail page</a>
+        <ul>
+            <li>Add the form with the fields name, email and comment</li>
+            <li>Check the format of the email address.</li>
+            <li>Handle errors that may occur (blank, invalid email, etc.).</li>
+        </ul>
+    </li>
 </ul>
-
 
 </div>
 
 <div class="column unitx2">
 
+<h4>Thread list</h4>
+
 <label>
 <input type="checkbox" name="" value="">
-The thread detail is shown (thread name, e-mail, comment)
+The thread detail is shown for each thread (thread name, rating and comment)
+</label>
+
+<label>
+<input type="checkbox" name="" value="">
+Each threda comment is cropped to a maxium of 200 chars
+</label>
+
+<label>
+<input type="checkbox" name="" value="">
+Links are made to go to the thread detail (thread title and read more link) for each thread
+</label>
+
+<label>
+<input type="checkbox" name="" value="">
+The prepared <a href="templates/thread_list.html">thread list template</a> is used
+</label>
+
+<h4>Thread add form</h4>
+
+<label>
+<input type="checkbox" name="" value="">
+A form to add a thread is shown on the <a href="templates/thread_list.html">thread list page</a> (with email, thread name and comment)
+</label>
+
+<label>
+<input type="checkbox" name="" value="">
+The form to add a thread works (comment is saved correctly)
+</label>
+
+<label>
+<input type="checkbox" name="" value="">
+Form errors are handled (blank, email format, etc.)
+</label>
+
+<label>
+<input type="checkbox" name="" value="">
+Entered form data is secured (no SQL injection is possible)
+</label>
+
+<h4>Thread detail</h4>
+
+<label>
+<input type="checkbox" name="" value="">
+The thread detail is shown (thread name, email, full comment)
 </label>
 
 <label>
@@ -364,33 +436,34 @@ The comments of the thread are shown
 
 <label>
 <input type="checkbox" name="" value="">
-The content and author is shown for each comment
+The comment, author and rating is shown for each comment
 </label>
 
 <label>
 <input type="checkbox" name="" value="">
-A form is shown to add a comment 
-(with name, email and content field)
+The prepared <a href="templates/thread_detail.html">thread detail template</a> is used
+</label>
+
+<h4>Comment add form</h4>
+
+<label>
+<input type="checkbox" name="" value="">
+A form to add a comment is shown on the <a href="templates/thread_detail.html">thread detail page</a> (with name, email and comment field)
 </label>
 
 <label>
 <input type="checkbox" name="" value="">
-The form to add a comment works
+The form to add a comment works (comment is saved correctly)
 </label>
 
 <label>
 <input type="checkbox" name="" value="">
-Errors are handled (blank, email format, etc.)
+Form errors are handled (blank, email format, etc.)
 </label>
 
 <label>
 <input type="checkbox" name="" value="">
-The data is secured
-</label>
-
-<label>
-<input type="checkbox" name="" value="">
-The prepared template is used (<b>TODO: Template?</b>)
+Entered form data is secured (no SQL injection is possible)
 </label>
 
 </div>
@@ -406,13 +479,12 @@ The prepared template is used (<b>TODO: Template?</b>)
 
 <p>
 Implement the rating system. Each comment can be rated up or down by the user. 
-The rating sum is shown below the comment with rating link +1 and -1. Show 
-sketches for more details.
+The rating sums (plus and minus) are shown below the comment with rating links.
 </p>
 
 <ul>
     <li>Implement the rating system on the <a href="templates/thread_detail.html">thread detail page</a></li>
-    <li>You have to finish the task 3 before you can start with this task.</li>
+    <li>You should finish the <a href="#task3">task 3</a> before you can start with this task.</li>
     <li><b>Bonus 1:</b> The user can only vote once for each comment (sessions)</li>
     <li><b>Bonus 2:</b> Ajax!</li>
 </ul>
@@ -428,12 +500,12 @@ Note: Do not waste time, make it simple and functional.
 
 <label>
 <input type="checkbox" name="" value="">
-The rating is shown for each comment
+User can vote up or down for every comment (thread is also a comment)
 </label>
 
 <label>
 <input type="checkbox" name="" value="">
-User can vote up or down for a comment
+Working rating buttons implemented on home page, thread list and detail page
 </label>
 
 <label>
@@ -448,7 +520,7 @@ User can vote up or down for a comment
 
 <label>
 <input type="checkbox" name="" value="">
-The template on the thread detail page is used (<b>TODO: Template?</b>)
+The given template is used
 </label>
 
 </div>
@@ -471,33 +543,21 @@ Show the tag list below the thread name.
 <ul>
     <li>
         Check if the tag already exists in the database when adding a new one:
-        <br />If it exists, link the tag to the thread.
-        <br />If not, create the new tag and link it to the thread
+        <ul>
+            <li>if it exists, link the tag to the thread.</li>
+            <li>if not, create the new tag and link it to the thread</li>
+        </ul>
     </li>
     <li>Make the tag submission case insensitive (convert to lowercase when you check for tags)</li>
     <li>Use the bootstrap “label” CSS class (search in documentation) for the tags displayed</li>
-    <li>Alert and success message examples you can find in the <a href="templates/design.html">design page</a></li>
+    <li>Alert a success message - examples you can find in the <a href="templates/design.html">design page</a></li>
 </ul>
 
 </div>
 
 <div class="column unitx2">
 
-<label>
-<input type="checkbox" name="" value="">
-The tag form is displayed and works
-</label>
-
-
-<label>
-<input type="checkbox" name="" value="">
-Add Tag: A new tag is added in the database when it does not exist (no duplicates)
-</label>
-
-<label>
-<input type="checkbox" name="" value="">
-Add Tag: Tags are connected to the thread in the database n:m relation table
-</label>
+<h4>Layout / Design</h4>
 
 <label>
 <input type="checkbox" name="" value="">
@@ -509,10 +569,21 @@ The tag list is shown underneath the thread name
 The bootstrap CSS "label" Class is used for the tags displayed
 </label>
 
+<label>
+<input type="checkbox" name="" value="">
+The tag form is displayed
+</label>
+
+<h4>Tag form</h4>
 
 <label>
 <input type="checkbox" name="" value="">
-The template on the thread detail page is used
+A new tag is added in the database when it does not exist (no duplicates)
+</label>
+
+<label>
+<input type="checkbox" name="" value="">
+New tags are connected to the thread
 </label>
 
 </div>
@@ -537,7 +608,7 @@ Create an option to search by keywords on the
 
 <label>
 <input type="checkbox" name="" value="">
-The search form is displayed and works
+The search form is displayed
 </label>
 
 <label>
@@ -547,7 +618,7 @@ The keywords search the thread name and comment
 
 <label>
 <input type="checkbox" name="" value="">
-The results are filtered by keyword on the <a href="templates/thread_list.html">tag list page</a>
+The results on the <a href="templates/thread_list.html">tag list page</a> are filtered by keyword
 </label>
 
 </div>

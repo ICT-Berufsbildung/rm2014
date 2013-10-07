@@ -95,3 +95,8 @@ h1, h2 {
 footer {
     text-align: center;
 }
+
+ul.rating li {
+    list-style: none;
+    display: inline;
+}
