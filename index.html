@@ -14,6 +14,17 @@
         <script>
             $(function() {
                 $('.fancybox').fancybox();
+                
+                $('.nav-list a').click(function (e) {
+
+                    e.preventDefault();
+
+                    var href = $.attr(this, 'href');
+                    var top = $(href).offset().top;
+                    $('html, body').animate({scrollTop: top});
+
+                    window.location.hash = href;
+                });
             });
         </script>
     </head>
@@ -33,9 +44,18 @@
                         <h3>Trade 17 - Web Design</h3>
                     </div>
                 </header>
-                <section class=" width4 first">
+                <section class="width4 first">
 
-<h2>Instructions</h2>
+<h2 id="instructions" class="column width2 first">Instructions</h2>
+
+<div class="column width2 nav-list">
+    <p>
+        <a href="#instructions">Instructions</a> · 
+        <a href="#project">Project</a> · 
+         <a href="#tasks">Tasks</a> · 
+         <a href="#marking">Marking Schema</a>
+    </p>
+</div>
 
 <div class="column width2 first">
 
@@ -43,7 +63,7 @@
 
 <p>
 This document describes the tasks to be performed for the 2014 Championships 
-in the category WebDesign. It is advised to read carefully and look at the 
+in the category Web Design. It is advised to read carefully and look at the 
 different media provided, such as images and text attached.
 </p>
 
@@ -174,7 +194,7 @@ To perform the tasks of this project, you are given the following manuals:
                 </section>
                 <section class=" width4 first">
 
-<h2>Project</h2>
+<h2 id="project">Project</h2>
 
 <div class="column width2 first">
 
@@ -219,12 +239,12 @@ This page is used to display the thread selected, including the name, the tags, 
                 <section class=" width4 first">
 
 <div class="column unitx1 first">
-    <h2>Tasks</h2>
+    <h2 id="tasks">Tasks</h2>
 </div>
 <div class="column unitx3"></div>
 <div class="column unitx2"></div>
 <div class="column unitx2 last">
-    <h2>Marking Schema</h2>
+    <h2 id="marking">Marking Schema</h2>
     For each achieved you get one point
 </div>
 
