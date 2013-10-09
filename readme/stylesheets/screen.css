@@ -19,6 +19,12 @@ p.inline {
     text-indent: 0;
 }
 
+hr {
+    background-color: #a5a5a5;
+    height: 1px;
+    margin: 18px 0 17px 0;
+}
+
 em {
     -webkit-hyphens: none;
     -moz-hyphens: none;
