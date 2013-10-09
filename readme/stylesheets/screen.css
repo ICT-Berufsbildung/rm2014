@@ -3,8 +3,10 @@ body {
     color: #333;
 }
 
-a {
-    color: #333;
+a:active,
+a:link,
+a:visited {
+    color: #0e5972;
 }
 
 p {
