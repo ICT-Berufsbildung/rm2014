@@ -85,6 +85,18 @@ section {
     width: 880px;
 }
 
+.section-breadcrumb {
+    background-color: transparent;
+    border-bottom: 0;
+    padding: 0;
+    width: 900px;
+}
+
+.breadcrumb {
+    margin-bottom: 0;
+    background-color: transparent;
+}
+
 h1, h2 {
     color: #0075a6;
     border-bottom: 1px solid #0075a6;
