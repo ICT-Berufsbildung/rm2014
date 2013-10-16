@@ -7,7 +7,7 @@
 
     <target name="zip" depends="eol">
         <zip destfile="rm2014.zip">
-            <zipfileset dir="." prefix="rm2014" excludes=".git,build.xml,rm2014.zip,rm2014-solution.zip,README.md" />
+            <zipfileset dir="." prefix="rm2014" excludes=".git,build.xml,rm2014.zip,rm2014-solution.zip" />
         </zip>
     </target>
 
