@@ -85,3 +85,9 @@ h5 {
     margin-top: 18px;
 }
 
+legend {
+    font-weight: normal;
+    font-size: 18px;
+    top: 2px;
+}
+
