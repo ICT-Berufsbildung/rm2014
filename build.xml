@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project name="Regionalmeisterschaft" default="zip">
+
+    <target name="eol">
+        <fixcrlf srcdir="." includes="competitor.txt" eol="crlf" />
+    </target>
+
+    <target name="zip" depends="eol">
+        <zip destfile="rm2014.zip">
+            <zipfileset dir="." prefix="rm2014" excludes=".git,build.xml,rm2014.zip,rm2014-solution.zip,README.md" />
+        </zip>
+    </target>
+
+    <target name="clean">
+        <delete file="rm2014.zip" />
+    </target>
+</project>
