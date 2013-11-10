@@ -3,6 +3,7 @@
 $database = require 'includes/database.php';
 
 $idThread = isset($_GET['id']) ? (int) $_GET['id'] : '';
+$success = isset($_GET['success']) ? $_GET['success'] : '';
 
 $sql = "
     SELECT
@@ -28,13 +29,30 @@ $statement->execute(array($idThread));
 
 $comments = $statement->fetchAll();
 
+$sql = "
+    SELECT
+        t.name_tag
+    FROM
+        `tag` t
+    INNER JOIN
+        `thread_tag` tt ON tt.id_tag = t.id_tag
+    WHERE
+        tt.id_thread = ?
+";
+
+$statement = $database->prepare($sql);
+$statement->execute(array($idThread));
+
+$tags = $statement->fetchAll();
+
 $nameAuthor = isset($_POST['name_author']) ? $_POST['name_author'] : '';
 $emailAuthor = isset($_POST['email_author']) ? $_POST['email_author'] : '';
 $content = isset($_POST['content']) ? $_POST['content'] : '';
+$nameTag = isset($_POST['name_tag']) ? $_POST['name_tag'] : '';
 
-if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+$messages = array();
 
-    $messages = array();
+if (!empty($_POST['add_comment'])) {
 
     if (!$nameAuthor) {
         $messages['name_author'] = 'Please enter your name.';
@@ -72,7 +90,68 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         $statement = $database->prepare($sql);
         $statement->execute(array($nameAuthor, $emailAuthor, $content, $idThread));
 
-        header('Location: thread_detail.php?id=' . $idThread);
+        header('Location: thread_detail.php?success=Comment+successfully+added.&id=' . $idThread);
+        exit;
+    }
+}
+
+
+if (!empty($_POST['add_tag'])) {
+
+    if (!$nameTag) {
+        $messages['name_tag'] = 'Please enter a tag.';
+    }
+
+    if (count($messages) == 0) {
+
+        $nameTag = trim(strtolower($nameTag));
+
+        $sql = 'SELECT t.id_tag FROM `tag` t WHERE t.name_tag = ?';
+
+        $statement = $database->prepare($sql);
+        $statement->execute(array($nameTag));
+
+        $tag = $statement->fetch();
+
+        if ($tag) {
+
+            $idTag = $tag['id_tag'];
+
+        } else {
+            
+            $sql = '
+                INSERT INTO
+                    `tag` (
+                        `name_tag`
+                    )
+                VALUES
+                    (
+                        ?
+                    )
+            ';
+            
+            $statement = $database->prepare($sql);
+            $statement->execute(array($nameTag));
+            $idTag = $database->lastInsertId();
+        }
+
+        $sql = '
+            INSERT INTO
+                `thread_tag` (
+                    `id_thread`,
+                    `id_tag`
+                )
+            VALUES
+                (
+                    ?,
+                    ?
+                )
+        ';
+
+        $statement = $database->prepare($sql);
+        $statement->execute(array($idThread, $idTag));
+
+        header('Location: thread_detail.php?success=Tag+successfully+added.&id=' . $idThread);
         exit;
     }
 }
@@ -90,6 +169,12 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         <?php endforeach; ?>
     </ul>
 </section>
+
+<?php if ($success): ?>
+    <div class="alert alert-success">
+        <?php echo htmlentities($success); ?>
+    </div>
+<?php endif; ?>
 
 <?php foreach ($comments as $i => $comment): ?>
     <section>
@@ -112,6 +197,9 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                 </li>
             </ul>
         </h1>
+        <?php if ($i === 0): ?>
+            <p>Tags: <?php foreach ($tags as $tag): ?><span class="label label-info"><?php echo htmlentities($tag['name_tag']); ?></span> <?php endforeach; ?></p>
+        <?php endif; ?>
         <p>
             <?php echo htmlentities($comment['content']); ?>
         </p>
@@ -137,7 +225,20 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         <?php if (isset($messages['content'])): ?>
             <span class="help-inline"><span class="text-error"><?php echo htmlentities($messages['content']); ?></span></span>
         <?php endif; ?>
-        <p><button type="submit" class="btn">Add comment</button></p>
+        <p><input type="submit" name="add_comment" class="btn" value="Add comment"></p>
+    </form>
+</section>
+
+<section>
+    <h1 id="add_tag">Add tag</h1>
+    <form action="#add_tag" method="post">
+        <input type="hidden" name="id" value="<?php echo htmlentities($idThread); ?>">
+        <label for="add_name_tag">Tag</label>
+        <input type="text" id="add_name_tag" name="name_tag" value="<?php echo htmlentities($nameTag); ?>">
+        <?php if (isset($messages['name_tag'])): ?>
+            <span class="help-inline"><span class="text-error"><?php echo htmlentities($messages['name_tag']); ?></span></span>
+        <?php endif; ?>
+        <p><input type="submit" name="add_tag" class="btn" value="Add Tag"></p>
     </form>
 </section>
 
