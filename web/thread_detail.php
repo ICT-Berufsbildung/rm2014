@@ -8,6 +8,7 @@ $sql = "
     SELECT
         t.id_thread,
         t.name_thread,
+        c.id_comment,
         c.rating_up,
         c.rating_down,
         c.name_author,
@@ -99,8 +100,16 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                 <?php echo htmlentities($comment['name_author']); ?>
             <?php endif; ?>
             <ul class="rating pull-right">
-                <li><a href="#" title="vote up"><span class="badge badge-success">+<?php echo htmlentities($comment['rating_up']); ?></span></a></li>
-                <li><a href="#" title="vote down"><span class="badge badge-important">-<?php echo htmlentities($comment['rating_down']); ?></span></a></li>
+                <li>
+                    <a href="#" title="vote up" class="vote" data-id="<?php echo htmlentities($comment['id_comment']); ?>" data-rating="up">
+                        <span class="badge badge-success">+<?php echo htmlentities($comment['rating_up']); ?></span>
+                    </a>
+                </li>
+                <li>
+                    <a href="#" title="vote down" class="vote" data-id="<?php echo htmlentities($comment['id_comment']); ?>" data-rating="down">
+                        <span class="badge badge-important">-<?php echo htmlentities($comment['rating_down']); ?></span>
+                    </a>
+                </li>
             </ul>
         </h1>
         <p>

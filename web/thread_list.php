@@ -6,6 +6,7 @@ $sql = "
     SELECT
         t.id_thread,
         t.name_thread,
+        c.id_comment,
         c.rating_up,
         c.rating_down,
         c.content
@@ -105,8 +106,16 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         <h1>
             <a href="thread_detail.php?id=<?php echo htmlentities($thread['id_thread']); ?>"><?php echo htmlentities($thread['name_thread']); ?></a>
             <ul class="rating pull-right">
-                <li><a href="#" title="vote up"><span class="badge badge-success">+<?php echo htmlentities($thread['rating_up']); ?></span></a></li>
-                <li><a href="#" title="vote down"><span class="badge badge-important">-<?php echo htmlentities($thread['rating_down']); ?></span></a></li>
+                <li>
+                    <a href="#" title="vote up" class="vote" data-id="<?php echo htmlentities($thread['id_comment']); ?>" data-rating="up">
+                        <span class="badge badge-success">+<?php echo htmlentities($thread['rating_up']); ?></span>
+                    </a>
+                </li>
+                <li>
+                    <a href="#" title="vote down" class="vote" data-id="<?php echo htmlentities($thread['id_comment']); ?>" data-rating="down">
+                        <span class="badge badge-important">-<?php echo htmlentities($thread['rating_down']); ?></span>
+                    </a>
+                </li>
             </ul>
         </h1>
         <p>
