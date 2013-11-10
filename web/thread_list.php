@@ -2,6 +2,8 @@
 
 $database = require 'includes/database.php';
 
+$keyword = isset($_GET['keyword']) ? $_GET['keyword'] : '';
+
 $sql = "
     SELECT
         t.id_thread,
@@ -14,13 +16,19 @@ $sql = "
         `thread` t
     INNER JOIN
         `comment` c ON c.id_thread = t.id_thread
+    WHERE
+        t.name_thread LIKE ? OR
+        c.content LIKE ?
     GROUP BY
         t.id_thread
     ORDER BY
         t.id_thread DESC
 ";
 
-$threads = $database->query($sql);
+$statement = $database->prepare($sql);
+$statement->execute(array("%$keyword%", "%$keyword%"));
+
+$threads = $statement->fetchAll();
 
 $nameAuthor = isset($_POST['name_author']) ? $_POST['name_author'] : '';
 $emailAuthor = isset($_POST['email_author']) ? $_POST['email_author'] : '';
@@ -99,6 +107,19 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
       <li><a href="./">Home</a> <span class="divider">/</span></li>
       <li class="active">Thread list</li>
     </ul>
+</section>
+
+<section>
+    <form action="" method="get">
+        <label for="search_keyword">Search by keyword</label>
+        <input type="search" id="search_keyword" name="keyword" value="<?php echo htmlentities($keyword); ?>">
+        <p>
+            <button type="submit" class="btn">Search</button>
+            <?php if ($keyword): ?>
+                <a href="./thread_list.php" class="btn btn-link">Reset search</a>
+            <?php endif; ?>
+        </p>
+    </form>
 </section>
 
 <?php foreach ($threads as $thread): ?>
