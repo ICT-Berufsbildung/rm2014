@@ -9,12 +9,6 @@ a:visited {
     color: #0e5972;
 }
 
-p {
-    -webkit-hyphens: auto;
-    -moz-hyphens: auto;
-    hyphens: auto;
-}
-
 p.inline {
     text-indent: 0;
 }
