@@ -8,7 +8,7 @@
 <head>
     <meta charset="utf-8" />
 
-    <title>Page name - IT Help</title>
+    <title>IT Help</title>
 
     <meta name="description" lang="fr" content="Helping people in IT technologies" />
     <meta name="keywords" lang="fr" content="IT, help, computer, problem, question" />
@@ -32,8 +32,8 @@
             </a>
 
             <nav>
-                <a href="home.html" class="active">Home</a>
-                <a href="thread_list.html">Thread list</a>
+                <a href="./home" class="active">Home</a>
+                <a href="./thread_list">Thread list</a>
                 <a href="about.html">About us</a>
             </nav>
 
