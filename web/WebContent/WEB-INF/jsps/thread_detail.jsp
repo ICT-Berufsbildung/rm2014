@@ -3,29 +3,30 @@
     <section class="section-breadcrumb">
         <ul class="breadcrumb">
           <li><a href="./home">Home</a> <span class="divider">/</span></li>
-          <li class="active">Thread list</li>
+          <li><a href="./thread_list">Threads</a> <span class="divider">/</span></li>
+          <li class="active">Thread name</li>
         </ul>
     </section>
 
-	<c:forEach var="thread" items="${threads}">
+	<c:forEach var="comment" items="${comments}" varStatus="status">
 	    <section>
 	        <h2>
-	            <a href="thread_detail?id=${fn:escapeXml(thread.id)}">${fn:escapeXml(thread.name)}</a>
+	            ${fn:escapeXml(status.first ? comment.nameThread : comment.nameAuthor)}
 	            <ul class="rating pull-right">
-	                <li><a href="#" title="vote up"><span class="badge badge-success">+${fn:escapeXml(thread.ratingUp)}</span></a></li>
-	                <li><a href="#" title="vote down"><span class="badge badge-important">-${fn:escapeXml(thread.ratingDown)}</span></a></li>
+	                <li><a href="#" title="vote up"><span class="badge badge-success">+${fn:escapeXml(comment.ratingUp)}</span></a></li>
+	                <li><a href="#" title="vote down"><span class="badge badge-important">-${fn:escapeXml(comment.ratingDown)}</span></a></li>
 	            </ul>
 	        </h2>
 	        <p>
-	            ${fn:escapeXml(thread.content)}
+	            ${fn:escapeXml(comment.content)}
 	        </p>
-	        <a href="thread_detail?id=${fn:escapeXml(thread.id)}">Read more</a>
+	        <a href="thread_detail.html">Read more</a>
 	    </section>
     </c:forEach>
 
     <section>
-        <h1 id="add_thread">Add thread</h1>
-        <form action="#add_thread" method="post">
+        <h1 id="add_comment">Add comment</h1>
+        <form action="#add_comment" method="post">
 
             <label for="add_name_author">Your name</label>
             <input type="text" id="add_name_author" name="name_author" value="${fn:escapeXml(param.name_author)}">
@@ -35,15 +36,11 @@
             <input type="email" id="add_name_thread" name="email_author" value="${fn:escapeXml(param.email_author)}">
            	<span class="help-inline"><span class="text-error">${fn:escapeXml(errors.email_author)}</span></span>
 
-            <label for="add_name_thread">Thread name</label>
-            <input class="input-xlarge" type="text" id="add_name_thread" name="name_thread" value="${fn:escapeXml(param.name_thread)}">
-           	<span class="help-inline"><span class="text-error">${fn:escapeXml(errors.name_thread)}</span></span>
-
-            <label for="add_name_thread">Your question</label>
+            <label for="add_name_thread">Comment</label>
             <textarea class="input-xlarge" rows="3" name="content">${fn:escapeXml(param.content)}</textarea>            
            	<span class="help-inline"><span class="text-error">${fn:escapeXml(errors.content)}</span></span>
 
-            <p><button type="submit" class="btn">Add thread</button></p>
+            <p><input type="submit" name="add_comment" class="btn" value="Add comment"></p>
         </form>
     </section>
 

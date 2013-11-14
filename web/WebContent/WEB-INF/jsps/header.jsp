@@ -27,14 +27,14 @@
 <div id="main">
     <header>
         <div>
-            <a href="home.html" class="logo">
+            <a href="./home" class="logo">
                 <img src="./images/logo.png" alt="Logo" />
             </a>
 
             <nav>
-                <a href="./home" class="active">Home</a>
-                <a href="./thread_list">Thread list</a>
-                <a href="about.html">About us</a>
+                <a href="./home" class="${fn:endsWith(pageContext.request.requestURI, 'home.jsp') ? 'active' : ''}">Home</a>
+                <a href="./thread_list" class="${fn:endsWith(pageContext.request.requestURI, 'thread_list.jsp') ? 'active' : ''}">Thread list</a>
+                <a href="./about.html">About us</a>
             </nav>
 
             <hr class="clear" />
