@@ -8,7 +8,7 @@
 
 <section>
     <h1>
-        <a href="thread_detail?id=${fn:escapeXml(thread.id)}">Hottest thread: ${fn:escapeXml(thread.name)}</a>
+        <a href="thread_detail?id=${fn:escapeXml(thread.idThread)}">Hottest thread: ${fn:escapeXml(thread.name)}</a>
         <ul class="rating pull-right">
             <li><a href="#" title="vote up"><span class="badge badge-success">+${fn:escapeXml(thread.ratingUp)}</span></a></li>
             <li><a href="#" title="vote down"><span class="badge badge-important">-${fn:escapeXml(thread.ratingDown)}</span></a></li>
@@ -17,7 +17,7 @@
     <p>
         ${fn:escapeXml(thread.content)}
     </p>
-    <a href="thread_detail?id=${fn:escapeXml(thread.id)}">Read more</a>
+    <a href="thread_detail?id=${fn:escapeXml(thread.idThread)}">Read more</a>
 </section>
 
 <section>

@@ -5,6 +5,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.HashMap;
 
@@ -40,6 +41,25 @@ public class ThreadDetailServlet extends HttpServlet {
 		return comments;
 	}
 
+	protected ArrayList<String> getTags(Connection connection, int id)
+			throws SQLException {
+
+		PreparedStatement statement = connection
+				.prepareStatement(""
+						+ "SELECT t.name_tag FROM thread_tag tt INNER JOIN tag t ON t.id_tag = tt.id_tag WHERE tt.id_thread = ?");
+		statement.setInt(1, id);
+		statement.execute();
+
+		ResultSet resultSet = statement.getResultSet();
+
+		ArrayList<String> tags = new ArrayList<>();
+		while (resultSet.next()) {
+			tags.add(resultSet.getString(1));
+		}
+
+		return tags;
+	}
+
 	protected void doGet(HttpServletRequest request,
 			HttpServletResponse response) throws ServletException, IOException {
 
@@ -51,6 +71,7 @@ public class ThreadDetailServlet extends HttpServlet {
 			int id = Integer.parseInt(request.getParameter("id"));
 
 			request.setAttribute("comments", getComments(connection, id));
+			request.setAttribute("tags", getTags(connection, id));
 
 			getServletContext().getRequestDispatcher(
 					"/WEB-INF/jsps/thread_detail.jsp").forward(request,
@@ -68,51 +89,111 @@ public class ThreadDetailServlet extends HttpServlet {
 
 		try {
 
-			String nameAuthor = request.getParameter("name_author");
-			String emailAuthor = request.getParameter("email_author");
-			String content = request.getParameter("content");
-
-			HashMap<String, String> errors = new HashMap<>();
-
-			if (nameAuthor.equals("")) {
-				errors.put("name_author", "Please enter your name");
-			}
-
-			if (emailAuthor.equals("")) {
-				errors.put("email_author", "Please enter your email");
-			} else if (!emailAuthor.contains("@")) {
-				errors.put("email_author", "Please enter a valid email");
-			}
-
-			if (content.equals("")) {
-				errors.put("content", "Please enter a comment");
-			}
-
 			Database database = Database.getInstance();
 			Connection connection = database.getConnection();
 
 			int id = Integer.parseInt(request.getParameter("id"));
 
-			if (errors.size() > 0) {
+			HashMap<String, String> errors = new HashMap<>();
 
-				request.setAttribute("errors", errors);
-				request.setAttribute("comments", getComments(connection, id));
+			if (request.getParameter("add_tag") != null) {
 
-				getServletContext().getRequestDispatcher(
-						"/WEB-INF/jsps/thread_detail.jsp").forward(request,
-						response);
-				return;
+				String tagName = request.getParameter("name_tag");
+				tagName = tagName.toLowerCase();
+
+				if (tagName.equals("")) {
+					errors.put("name_tag", "Please enter a tag");
+				}
+
+				if (errors.size() > 0) {
+
+					request.setAttribute("errors", errors);
+					request.setAttribute("comments",
+							getComments(connection, id));
+					request.setAttribute("tags", getTags(connection, id));
+
+					getServletContext().getRequestDispatcher(
+							"/WEB-INF/jsps/thread_detail.jsp").forward(request,
+							response);
+					return;
+				}
+
+				PreparedStatement statement = connection
+						.prepareStatement("SELECT id_tag FROM tag WHERE name_tag = ?");
+				statement.setString(1, tagName);
+				statement.execute();
+
+				ResultSet resultSet = statement.getResultSet();
+
+				int idTag;
+				if (resultSet.next()) {
+
+					idTag = resultSet.getInt(1);
+
+				} else {
+
+					statement = connection.prepareStatement(
+							"INSERT INTO tag (name_tag) VALUES (?)",
+							Statement.RETURN_GENERATED_KEYS);
+					statement.setString(1, tagName);
+					statement.execute();
+
+					ResultSet rs = statement.getGeneratedKeys();
+					rs.next();
+					idTag = rs.getInt(1);
+				}
+
+				statement = connection
+						.prepareStatement("INSERT INTO thread_tag (id_thread, id_tag) VALUES (?, ?)");
+				statement.setInt(1, id);
+				statement.setInt(2, idTag);
+				statement.execute();
+
+				response.sendRedirect("thread_detail?success=Tag+added.&id=" + id);
+
+			} else {
+
+				String nameAuthor = request.getParameter("name_author");
+				String emailAuthor = request.getParameter("email_author");
+				String content = request.getParameter("content");
+
+				if (nameAuthor.equals("")) {
+					errors.put("name_author", "Please enter your name");
+				}
+
+				if (emailAuthor.equals("")) {
+					errors.put("email_author", "Please enter your email");
+				} else if (!emailAuthor.contains("@")) {
+					errors.put("email_author", "Please enter a valid email");
+				}
+
+				if (content.equals("")) {
+					errors.put("content", "Please enter a comment");
+				}
+
+				if (errors.size() > 0) {
+
+					request.setAttribute("errors", errors);
+					request.setAttribute("comments",
+							getComments(connection, id));
+					request.setAttribute("tags", getTags(connection, id));
+
+					getServletContext().getRequestDispatcher(
+							"/WEB-INF/jsps/thread_detail.jsp").forward(request,
+							response);
+					return;
+				}
+
+				PreparedStatement statement = connection
+						.prepareStatement("INSERT INTO comment (name_author, email_author, content, id_thread) VALUES (?, ?, ?, ?)");
+				statement.setString(1, nameAuthor);
+				statement.setString(2, emailAuthor);
+				statement.setString(3, content);
+				statement.setInt(4, id);
+				statement.execute();
+
+				response.sendRedirect("thread_detail?id=" + id);
 			}
-
-			PreparedStatement statement = connection
-					.prepareStatement("INSERT INTO comment (name_author, email_author, content, id_thread) VALUES (?, ?, ?, ?)");
-			statement.setString(1, nameAuthor);
-			statement.setString(2, emailAuthor);
-			statement.setString(3, content);
-			statement.setInt(4, id);
-			statement.execute();
-
-			response.sendRedirect("thread_detail?id=" + id);
 
 		} catch (ClassNotFoundException e) {
 			e.printStackTrace();
