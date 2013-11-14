@@ -1,3 +1,0 @@
-Options +FollowSymLinks
-RewriteEngine on
-RewriteRule ([a-z_-]*).html$ index.php?page=$1 [L,QSA,NC]
