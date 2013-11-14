@@ -5,7 +5,9 @@ import java.sql.SQLException;
 
 public class Thread {
 
-	private int id = 0;
+	private int idThread = 0;
+
+	private int idComment = 0;
 
 	private String name = "";
 
@@ -15,8 +17,12 @@ public class Thread {
 
 	private int ratingDown = 0;
 
-	public int getId() {
-		return id;
+	public int getIdThread() {
+		return idThread;
+	}
+
+	public int getIdComment() {
+		return idComment;
 	}
 
 	public String getName() {
@@ -37,7 +43,8 @@ public class Thread {
 
 	public static Thread create(ResultSet resultSet) throws SQLException {
 		Thread thread = new Thread();
-		thread.id = resultSet.getInt("id_thread");
+		thread.idThread = resultSet.getInt("id_thread");
+		thread.idComment = resultSet.getInt("id_comment");
 		thread.name = resultSet.getString("name_thread");
 		thread.content = resultSet.getString("content");
 		thread.ratingUp = resultSet.getInt("rating_up");

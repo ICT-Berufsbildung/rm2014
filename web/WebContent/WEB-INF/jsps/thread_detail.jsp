@@ -13,8 +13,8 @@
 	        <h2>
 	            ${fn:escapeXml(status.first ? comment.nameThread : comment.nameAuthor)}
 	            <ul class="rating pull-right">
-	                <li><a href="#" title="vote up"><span class="badge badge-success">+${fn:escapeXml(comment.ratingUp)}</span></a></li>
-	                <li><a href="#" title="vote down"><span class="badge badge-important">-${fn:escapeXml(comment.ratingDown)}</span></a></li>
+	                <li><a href="./rating?id_thread=${fn:escapeXml(comment.idThread)}&amp;id_comment=${fn:escapeXml(comment.idComment)}&amp;dir=up" title="vote up"><span class="badge badge-success">+${fn:escapeXml(comment.ratingUp)}</span></a></li>
+	                <li><a href="./rating?id_thread=${fn:escapeXml(comment.idThread)}&amp;id_comment=${fn:escapeXml(comment.idComment)}&amp;dir=down" title="vote down"><span class="badge badge-important">-${fn:escapeXml(comment.ratingDown)}</span></a></li>
 	            </ul>
 	        </h2>
 	        <p>

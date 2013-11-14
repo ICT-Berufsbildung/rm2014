@@ -24,7 +24,7 @@ public class ThreadDetailServlet extends HttpServlet {
 
 		PreparedStatement statement = connection
 				.prepareStatement(""
-						+ "SELECT c.name_author, c.content, c.rating_up, c.rating_down, t.id_thread, t.name_thread "
+						+ "SELECT c.id_comment, c.name_author, c.content, c.rating_up, c.rating_down, t.id_thread, t.name_thread "
 						+ "FROM comment c INNER JOIN thread t ON t.id_thread = c.id_thread WHERE c.id_thread = ? ORDER BY t.id_thread DESC");
 		statement.setInt(1, id);
 		statement.execute();

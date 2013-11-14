@@ -5,6 +5,8 @@ import java.sql.SQLException;
 
 public class Comment {
 
+	private int idComment = 0;
+
 	private int idThread = 0;
 
 	private String nameThread = "";
@@ -16,6 +18,10 @@ public class Comment {
 	private int ratingUp = 0;
 
 	private int ratingDown = 0;
+
+	public int getIdComment() {
+		return idComment;
+	}
 
 	public int getIdThread() {
 		return idThread;
@@ -43,6 +49,7 @@ public class Comment {
 
 	public static Comment create(ResultSet resultSet) throws SQLException {
 		Comment thread = new Comment();
+		thread.idComment = resultSet.getInt("id_comment");
 		thread.idThread = resultSet.getInt("id_thread");
 		thread.nameAuthor = resultSet.getString("name_author");
 		thread.nameThread = resultSet.getString("name_thread");

@@ -26,7 +26,7 @@ public class ThreadListServlet extends HttpServlet {
 		Statement statement = connection.createStatement();
 		ResultSet resultSet = statement
 				.executeQuery(""
-						+ "SELECT t.id_thread, t.name_thread, c.content, c.rating_up, c.rating_down "
+						+ "SELECT t.id_thread, t.name_thread, c.id_comment, c.content, c.rating_up, c.rating_down "
 						+ "FROM thread t INNER JOIN comment c ON c.id_thread = t.id_thread GROUP BY t.id_thread ORDER BY t.id_thread DESC");
 
 		ArrayList<Thread> threads = new ArrayList<>();
