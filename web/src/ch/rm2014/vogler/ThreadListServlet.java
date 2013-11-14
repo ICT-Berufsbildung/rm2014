@@ -20,14 +20,25 @@ public class ThreadListServlet extends HttpServlet {
 
 	private static final long serialVersionUID = 1L;
 
-	protected ArrayList<Thread> getThreads(Connection connection)
+	protected ArrayList<Thread> getThreads(Connection connection, String keyword)
 			throws SQLException {
 
-		Statement statement = connection.createStatement();
-		ResultSet resultSet = statement
-				.executeQuery(""
+		if (keyword == null) {
+			keyword = "%";
+		} else {
+			keyword = "%" + keyword + "%";
+		}
+
+		PreparedStatement statement = connection
+				.prepareStatement(""
 						+ "SELECT t.id_thread, t.name_thread, c.id_comment, c.content, c.rating_up, c.rating_down "
-						+ "FROM thread t INNER JOIN comment c ON c.id_thread = t.id_thread GROUP BY t.id_thread ORDER BY t.id_thread DESC");
+						+ "FROM thread t INNER JOIN comment c ON c.id_thread = t.id_thread WHERE t.name_thread LIKE ? OR c.content LIKE ? "
+						+ "GROUP BY t.id_thread ORDER BY t.id_thread DESC");
+		statement.setString(1, keyword);
+		statement.setString(2, keyword);
+		statement.execute();
+
+		ResultSet resultSet = statement.getResultSet();
 
 		ArrayList<Thread> threads = new ArrayList<>();
 		while (resultSet.next()) {
@@ -43,10 +54,12 @@ public class ThreadListServlet extends HttpServlet {
 
 		try {
 
+			String keyword = request.getParameter("keyword");
+
 			Database database = Database.getInstance();
 			Connection connection = database.getConnection();
 
-			request.setAttribute("threads", getThreads(connection));
+			request.setAttribute("threads", getThreads(connection, keyword));
 
 			getServletContext().getRequestDispatcher(
 					"/WEB-INF/jsps/thread_list.jsp").forward(request, response);
@@ -94,7 +107,7 @@ public class ThreadListServlet extends HttpServlet {
 			if (errors.size() > 0) {
 
 				request.setAttribute("errors", errors);
-				request.setAttribute("threads", getThreads(connection));
+				request.setAttribute("threads", getThreads(connection, null));
 
 				getServletContext().getRequestDispatcher(
 						"/WEB-INF/jsps/thread_list.jsp").forward(request,
@@ -102,8 +115,9 @@ public class ThreadListServlet extends HttpServlet {
 				return;
 			}
 
-			PreparedStatement statement = connection
-					.prepareStatement("INSERT INTO thread (name_thread) VALUES (?)", Statement.RETURN_GENERATED_KEYS);
+			PreparedStatement statement = connection.prepareStatement(
+					"INSERT INTO thread (name_thread) VALUES (?)",
+					Statement.RETURN_GENERATED_KEYS);
 			statement.setString(1, nameThread);
 			statement.execute();
 

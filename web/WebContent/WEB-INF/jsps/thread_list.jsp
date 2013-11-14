@@ -7,6 +7,13 @@
         </ul>
     </section>
 
+	<section>
+	    <form action="" method="get">
+	        <input type="text" name="keyword" value="${fn:escapeXml(param.keyword)}" placeholder="Keyword">
+	        <p><input type="submit" class="btn" value="Search"> <a href="./thread_list" class="btn btn-link">Clear search</a></p>
+	    </form>
+	</section>
+
 	<c:forEach var="thread" items="${threads}">
 	    <section>
 	        <h2>
