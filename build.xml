@@ -7,7 +7,37 @@
 
     <target name="zip" depends="eol">
         <zip destfile="rm2014.zip">
-            <zipfileset dir="." prefix="rm2014" excludes=".git,build.xml,rm2014.zip,rm2014-solution.zip" />
+            <zipfileset dir="." prefix="rm2014" excludes=".git,build.xml,software,rm2014.zip,rm2014-solution.zip" />
+        </zip>
+    </target>
+
+    <target name="software">
+        <get dest="software/" verbose="on" usetimestamp="true">
+            <url url="http://downloads.sourceforge.net/project/xampp/XAMPP%20Windows/1.8.2/xampp-win32-1.8.2-2-VC9-installer.exe" />
+            <url url="http://download.tuxfamily.org/notepadplus/6.5.1/npp.6.5.1.Installer.exe" />
+            <url url="http://mirror.switch.ch/eclipse/technology/epp/downloads/release/kepler/SR1/eclipse-jee-kepler-SR1-win32.zip" />
+            <url url="http://mirror.switch.ch/eclipse/tools/pdt/downloads/drops/3.2.0/R201306051924/pdt-Update-3.2.0.201306051924.zip" />
+            <url url="http://download.jetbrains.com/webide/PhpStorm-7.0.exe" />
+            <url url="http://download-installer.cdn.mozilla.net/pub/mozilla.org/firefox/releases/25.0/win32/en-US/Firefox%20Setup%2025.0.exe" />
+            <url url="https://addons.mozilla.org/firefox/downloads/latest/1843/addon-1843-latest.xpi" />
+            <url url="https://dl.google.com/update2/installers/ChromeSetup.exe" />
+            <url url="http://cdn.bitbucket.org/jerzykozera/zeal-win32-binary-downloads/downloads/zeal-20131017.zip" />
+            <url url="http://dev.mysql.com/get/Downloads/Connector-J/mysql-connector-java-5.1.27.zip" />
+            <url url="http://search.maven.org/remotecontent?filepath=org/glassfish/web/javax.servlet.jsp.jstl/1.2.1/javax.servlet.jsp.jstl-1.2.1-javadoc.jar" />
+            <url url="http://search.maven.org/remotecontent?filepath=javax/servlet/jsp/jstl/javax.servlet.jsp.jstl-api/1.2.1/javax.servlet.jsp.jstl-api-1.2.1-javadoc.jar" />
+            <url url="http://london.kapeli.com/feeds/PHP.tgz" />
+            <url url="http://london.kapeli.com/feeds/MySQL.tgz" />
+            <url url="http://london.kapeli.com/feeds/jQuery.tgz" />
+            <url url="http://london.kapeli.com/feeds/Java_SE7.tgz" />
+            <url url="http://london.kapeli.com/feeds/Bootstrap_2.tgz" />
+            <firstmatchmapper>
+                <globmapper from="http://search.maven.org/remotecontent?filepath=org/glassfish/web/javax.servlet.jsp.jstl/1.2.1/javax.servlet.jsp.jstl-1.2.1-javadoc.jar" to="javax.servlet.jsp.jstl-1.2.1-javadoc.jar"/>
+                <globmapper from="http://search.maven.org/remotecontent?filepath=javax/servlet/jsp/jstl/javax.servlet.jsp.jstl-api/1.2.1/javax.servlet.jsp.jstl-api-1.2.1-javadoc.jar" to="javax.servlet.jsp.jstl-api-1.2.1-javadoc.jar"/>
+            </firstmatchmapper>
+        </get>
+        <exec dir="software/" command="wget --no-cookies --no-check-certificate --header 'Cookie: gpw_e24=http%3A%2F%2Fwww.oracle.com%2F' 'http://download.oracle.com/otn-pub/java/jdk/7u45-b18/jdk-7u45-windows-i586.exe'" />
+        <zip destfile="software.zip">
+            <zipfileset dir="software/" />
         </zip>
     </target>
 
