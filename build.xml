@@ -12,7 +12,7 @@
     </target>
 
     <target name="software">
-        <get dest="software/" verbose="on" usetimestamp="true">
+        <get dest="software/" usetimestamp="true">
             <url url="http://downloads.sourceforge.net/project/xampp/XAMPP%20Windows/1.8.2/xampp-win32-1.8.2-2-VC9-installer.exe" />
             <url url="http://download.tuxfamily.org/notepadplus/6.5.1/npp.6.5.1.Installer.exe" />
             <url url="http://mirror.switch.ch/eclipse/technology/epp/downloads/release/kepler/SR1/eclipse-jee-kepler-SR1-win32.zip" />
@@ -23,19 +23,25 @@
             <url url="https://dl.google.com/update2/installers/ChromeSetup.exe" />
             <url url="http://cdn.bitbucket.org/jerzykozera/zeal-win32-binary-downloads/downloads/zeal-20131017.zip" />
             <url url="http://dev.mysql.com/get/Downloads/Connector-J/mysql-connector-java-5.1.27.zip" />
-            <url url="http://search.maven.org/remotecontent?filepath=org/glassfish/web/javax.servlet.jsp.jstl/1.2.1/javax.servlet.jsp.jstl-1.2.1-javadoc.jar" />
-            <url url="http://search.maven.org/remotecontent?filepath=javax/servlet/jsp/jstl/javax.servlet.jsp.jstl-api/1.2.1/javax.servlet.jsp.jstl-api-1.2.1-javadoc.jar" />
             <url url="http://london.kapeli.com/feeds/PHP.tgz" />
             <url url="http://london.kapeli.com/feeds/MySQL.tgz" />
             <url url="http://london.kapeli.com/feeds/jQuery.tgz" />
             <url url="http://london.kapeli.com/feeds/Java_SE7.tgz" />
             <url url="http://london.kapeli.com/feeds/Bootstrap_2.tgz" />
-            <firstmatchmapper>
-                <globmapper from="http://search.maven.org/remotecontent?filepath=org/glassfish/web/javax.servlet.jsp.jstl/1.2.1/javax.servlet.jsp.jstl-1.2.1-javadoc.jar" to="javax.servlet.jsp.jstl-1.2.1-javadoc.jar"/>
-                <globmapper from="http://search.maven.org/remotecontent?filepath=javax/servlet/jsp/jstl/javax.servlet.jsp.jstl-api/1.2.1/javax.servlet.jsp.jstl-api-1.2.1-javadoc.jar" to="javax.servlet.jsp.jstl-api-1.2.1-javadoc.jar"/>
-            </firstmatchmapper>
         </get>
-        <exec dir="software/" command="wget --no-cookies --no-check-certificate --header 'Cookie: gpw_e24=http%3A%2F%2Fwww.oracle.com%2F' 'http://download.oracle.com/otn-pub/java/jdk/7u45-b18/jdk-7u45-windows-i586.exe'" />
+        <get src="http://search.maven.org/remotecontent?filepath=org/glassfish/web/javax.servlet.jsp.jstl/1.2.1/javax.servlet.jsp.jstl-1.2.1-javadoc.jar" dest="software/javax.servlet.jsp.jstl-1.2.1-javadoc.jar" usetimestamp="true"/>
+        <get src="http://search.maven.org/remotecontent?filepath=javax/servlet/jsp/jstl/javax.servlet.jsp.jstl-api/1.2.1/javax.servlet.jsp.jstl-api-1.2.1-javadoc.jar" dest="software/javax.servlet.jsp.jstl-api-1.2.1-javadoc.jar" usetimestamp="true"/>
+        <exec dir="software/" executable="curl">
+            <arg value="--cookie" />
+            <arg value="gpw_e24=http%3A%2F%2Fwww.oracle.com" />
+            <arg value="--time-cond" />
+            <arg value="jdk-7u45-windows-i586.exe" />
+            <arg value="--remote-name" />
+            <arg value="--remote-time" />
+            <arg value="--location" />
+            <arg value="http://download.oracle.com/otn-pub/java/jdk/7u45-b18/jdk-7u45-windows-i586.exe" />
+            <arg value="--silent" />
+        </exec>
         <zip destfile="software.zip">
             <zipfileset dir="software/" />
         </zip>
@@ -43,5 +49,9 @@
 
     <target name="clean">
         <delete file="rm2014.zip" />
+        <delete file="software.zip" />
+        <delete>
+            <fileset dir="software" includes="**/*" excludes=".gitkeep" />
+        </delete>
     </target>
 </project>
