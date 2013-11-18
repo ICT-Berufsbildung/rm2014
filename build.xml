@@ -28,6 +28,7 @@
             <url url="http://london.kapeli.com/feeds/jQuery.tgz" />
             <url url="http://london.kapeli.com/feeds/Java_SE7.tgz" />
             <url url="http://london.kapeli.com/feeds/Bootstrap_2.tgz" />
+            <url url="http://mirror.switch.ch/mirror/apache/dist/tomcat/tomcat-7/v7.0.47/bin/apache-tomcat-7.0.47-fulldocs.tar.gz" />
         </get>
         <get src="http://search.maven.org/remotecontent?filepath=org/glassfish/web/javax.servlet.jsp.jstl/1.2.1/javax.servlet.jsp.jstl-1.2.1-javadoc.jar" dest="software/javax.servlet.jsp.jstl-1.2.1-javadoc.jar" usetimestamp="true"/>
         <get src="http://search.maven.org/remotecontent?filepath=javax/servlet/jsp/jstl/javax.servlet.jsp.jstl-api/1.2.1/javax.servlet.jsp.jstl-api-1.2.1-javadoc.jar" dest="software/javax.servlet.jsp.jstl-api-1.2.1-javadoc.jar" usetimestamp="true"/>
@@ -40,6 +41,17 @@
             <arg value="--remote-time" />
             <arg value="--location" />
             <arg value="http://download.oracle.com/otn-pub/java/jdk/7u45-b18/jdk-7u45-windows-i586.exe" />
+            <arg value="--silent" />
+        </exec>
+        <exec dir="software/" executable="curl">
+            <arg value="--cookie" />
+            <arg value="gpw_e24=http%3A%2F%2Fwww.oracle.com" />
+            <arg value="--time-cond" />
+            <arg value="javadocee6.zip" />
+            <arg value="--remote-name" />
+            <arg value="--remote-time" />
+            <arg value="--location" />
+            <arg value="http://download.oracle.com/otn-pub/java/javaee6u20/javadocee6.zip" />
             <arg value="--silent" />
         </exec>
         <zip destfile="software.zip">
