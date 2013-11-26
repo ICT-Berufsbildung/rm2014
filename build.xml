@@ -21,7 +21,7 @@
             <url url="http://ftp.mozilla.org/pub/mozilla.org/firefox/releases/25.0.1/win32/en-US/Firefox%20Setup%2025.0.1.exe" />
             <url url="https://addons.mozilla.org/firefox/downloads/latest/1843/addon-1843-latest.xpi" />
             <url url="https://dl.google.com/update2/installers/ChromeSetup.exe" />
-            <url url="http://cdn.bitbucket.org/jerzykozera/zeal-win32-binary-downloads/downloads/zeal-20131017.zip" />
+            <url url="http://cdn.bitbucket.org/jerzykozera/zeal-win32-binary-downloads/downloads/zeal-20131109.zip" />
             <url url="http://dev.mysql.com/get/Downloads/Connector-J/mysql-connector-java-5.1.27.zip" />
             <url url="http://london.kapeli.com/feeds/PHP.tgz" />
             <url url="http://london.kapeli.com/feeds/MySQL.tgz" />
@@ -30,6 +30,13 @@
             <url url="http://london.kapeli.com/feeds/Bootstrap_2.tgz" />
             <url url="http://mirror.switch.ch/mirror/apache/dist/tomcat/tomcat-7/v7.0.47/bin/apache-tomcat-7.0.47-fulldocs.tar.gz" />
         </get>
+        <unzip src="software/zeal-20131109.zip" dest="software" />
+        <untar src="software/PHP.tgz" dest="software/zeal-20131109/docsets" compression="bzip2" />
+        <untar src="software/MySQL.tgz" dest="software/zeal-20131109/docsets" compression="bzip2" />
+        <untar src="software/PHP.tgz" dest="software/zeal-20131109/docsets" compression="bzip2" />
+        <untar src="software/jQuery.tgz" dest="software/zeal-20131109/docsets" compression="bzip2" />
+        <untar src="software/Java_SE7.tgz" dest="software/zeal-20131109/docsets" compression="bzip2" />
+        <untar src="software/Bootstrap_2.tgz" dest="software/zeal-20131109/docsets" compression="bzip2" />
         <get src="http://search.maven.org/remotecontent?filepath=org/glassfish/web/javax.servlet.jsp.jstl/1.2.1/javax.servlet.jsp.jstl-1.2.1-javadoc.jar" dest="software/javax.servlet.jsp.jstl-1.2.1-javadoc.jar" usetimestamp="true"/>
         <get src="http://search.maven.org/remotecontent?filepath=javax/servlet/jsp/jstl/javax.servlet.jsp.jstl-api/1.2.1/javax.servlet.jsp.jstl-api-1.2.1-javadoc.jar" dest="software/javax.servlet.jsp.jstl-api-1.2.1-javadoc.jar" usetimestamp="true"/>
         <exec dir="software/" executable="curl">
@@ -55,7 +62,7 @@
             <arg value="--silent" />
         </exec>
         <zip destfile="software.zip">
-            <zipfileset dir="software/" />
+            <zipfileset dir="software/" excludes="software/zeal-20131109.zip" />
         </zip>
     </target>
 
