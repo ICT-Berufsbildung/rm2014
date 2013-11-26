@@ -62,7 +62,7 @@
             <arg value="--silent" />
         </exec>
         <zip destfile="software.zip">
-            <zipfileset dir="software/" excludes="zeal-20131109.zip" />
+            <zipfileset dir="software/" excludes="zeal-20131109.zip,PHP.tgz,MySQL.tgz,jQuery.tgz,Java_SE7.tgz,Bootstrap_2.tgz" />
         </zip>
     </target>
 
