@@ -62,7 +62,7 @@
             <arg value="--silent" />
         </exec>
         <zip destfile="software.zip">
-            <zipfileset dir="software/" excludes="software/zeal-20131109.zip" />
+            <zipfileset dir="software/" excludes="zeal-20131109.zip" />
         </zip>
     </target>
 
