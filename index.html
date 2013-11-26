@@ -14,7 +14,7 @@
         <script>
             $(function() {
                 $('.fancybox').fancybox();
-                
+
                 $('.nav-list a').click(function (e) {
 
                     e.preventDefault();
@@ -25,7 +25,7 @@
 
                     window.location.hash = href;
                 });
-                
+
                 var checkboxes = $('input:checkbox');
                 checkboxes.change(function () {
                     $('#points-checked').text(checkboxes.filter(':checked').size());
@@ -56,9 +56,9 @@
 
 <div class="column width2 nav-list">
     <p>
-        <a href="#instructions">Instructions</a>, 
-        <a href="#project">Project</a>, 
-         <a href="#tasks">Tasks</a>, 
+        <a href="#instructions">Instructions</a>,
+        <a href="#project">Project</a>,
+         <a href="#tasks">Tasks</a>,
          <a href="#marking">Marking Schema</a>
     </p>
 </div>
@@ -68,31 +68,31 @@
 <h3>Introduction</h3>
 
 <p>
-This document describes the tasks to be performed for the Regional Champion&shy;ships 2014 
-in the category Web Design. It is advised to read carefully and look at the 
+This document describes the tasks to be performed for the Regional Champion&shy;ships 2014
+in the category Web Design. It is advised to read carefully and look at the
 different provided templates.
 </p>
 
 <p>
-You have 3 hours to complete as many tasks as possible without using any 
-external resources other than those provided. You are free to perform the 
-required tasks with all the skills you have using the tools provided. 
-In addition to the designs provided, it is of course possible to produce new 
+You have 3 hours to complete as many tasks as possible without using any
+external resources other than those provided. You are free to perform the
+required tasks with all the skills you have using the tools provided.
+In addition to the designs provided, it is of course possible to produce new
 design elements or modify existing ones if you think it necessary.
 </p>
 
 <p>
-You probably will not have enough time to complete all the formal and technical 
-criteria of the tasks. In this case, you must decide the criteria to achieve in 
-priority to win as many points as possible. But be careful to make a version of 
+You probably will not have enough time to complete all the formal and technical
+criteria of the tasks. In this case, you must decide the criteria to achieve in
+priority to win as many points as possible. But be careful to make a version of
 the site running without errors.
 </p>
 
 <h3>Evaluation</h3>
 
 <p>
-Each task performed will be evaluated on the implementation carried out of 
-various features requested in the task description. In addition, the following 
+Each task performed will be evaluated on the implementation carried out of
+various features requested in the task description. In addition, the following
 criteria are also involved in the evaluation;
 </p>
 
@@ -109,7 +109,7 @@ criteria are also involved in the evaluation;
 <ul>
     <li>
         <b>Zip file:</b>
-        All deliverables must be submitted in a zip file. 
+        All deliverables must be submitted in a zip file.
         The zip file includes the site files as well as a "dump" of the database
         saved as “database.sql” and the filled out “competitor.txt”.
     </li>
@@ -123,12 +123,12 @@ criteria are also involved in the evaluation;
     </li>
     <li>
         <b>Notes and documents:</b>
-        At the end of the competition you also submit all documents and notes to 
+        At the end of the competition you also submit all documents and notes to
         the supervisor.
     </li>
     <li>
         <b>Considered for evaluation:</b>
-        Only notes and entries made in the contents of the zip file will be 
+        Only notes and entries made in the contents of the zip file will be
         considered for the evaluation of the work.
     </li>
 </ul>
@@ -152,7 +152,7 @@ To perform the tasks, the following rules apply:
 </ul>
 
 <p>
-The non-compliance with the rules may result in your disqualification from the 
+The non-compliance with the rules may result in your disqualification from the
 competition.
 </p>
 
@@ -179,7 +179,7 @@ The tools available to perform the tasks in this document are:
 <h3>Documentation</h3>
 
 <p>
-To perform the tasks of this project, you are given the application Zeal 
+To perform the tasks of this project, you are given the application Zeal
 which includes the following manuals:
 </p>
 
@@ -193,7 +193,7 @@ which includes the following manuals:
 
 </div>
 
-                </section>           
+                </section>
 <hr/>
                 <section class=" width4 first">
 
@@ -204,14 +204,14 @@ which includes the following manuals:
 <h3>Introduction</h3>
 
 <p>
-One day a manager had the idea to create a website to help people 
+One day a manager had the idea to create a website to help people
 in IT technologies. He envisioned a website for sharing questions and answers.
-The site allows users to ask questions through threads. Others can respond 
+The site allows users to ask questions through threads. Others can respond
 to the questions and vote for the best answers.
 </p>
 
 <p>
-Because information technologies are very diverse, the manager wants to 
+Because information technologies are very diverse, the manager wants to
 assign tags to each thread to classify and easily find them.
 </p>
 
@@ -234,7 +234,7 @@ This page provides a list containing threads created by users. The search by nam
 </li>
 <li>
 <a href="templates/thread_detail.html">Thread details</a><br/>
-This page is used to display the thread selected, including the name, the tags, comments left by users and a system rating for each one. The page also contains a form to leave a comment. 
+This page is used to display the thread selected, including the name, the tags, comments left by users and a system rating for each one. The page also contains a form to leave a comment.
 </li>
 </ul>
 </div>
@@ -263,7 +263,7 @@ This page is used to display the thread selected, including the name, the tags, 
 <div class="column unitx5">
 
 <p>
-Fill out the file named “competitor.txt” with your name, your email address, 
+Fill out the file named “competitor.txt” with your name, your email address,
 your birthdate, your company and your school.
 </p>
 
@@ -289,8 +289,8 @@ The file “competitor.txt” exists and is completely filled out.
 <div class="column unitx3">
 
 <p>
-Design two tables: the comment table and the associative table between 
-thread and tag. Add some example content to them and export the database with 
+Design two tables: the comment table and the associative table between
+thread and tag. Add some example content to them and export the database with
 all the tables and the content into a file called “database.sql”.
 </p>
 
@@ -355,10 +355,10 @@ Example content exists
 <div class="column unitx5">
 
 <p>
-Create a dynamic homepage with the programming language of your choice and 
-display the “hottest” thread from the database. It is recommended to create all 
+Create a dynamic homepage with the programming language of your choice and
+display the “hottest” thread from the database. It is recommended to create all
 your work in a folder called “web” and copy the required CSS and JavaScript from
-the template to this folder - this way you can always look at the original 
+the template to this folder - this way you can always look at the original
 templates again.
 </p>
 
@@ -406,7 +406,7 @@ The prepared <a href="templates/home.html">home page template</a> is used
 
 <p>
 Implement the thread list and the form to add a new thread. Read the data from
-the database created in <a href="#task1">Task 1</a> and the templates provided 
+the database created in <a href="#task1">Task 1</a> and the templates provided
 in the “templates” folder.
 </p>
 
@@ -527,7 +527,7 @@ The thread detail is shown (thread name, email, full comment)
 
 <label>
 <input type="checkbox" name="" value="">
-The comments of the thread are shown 
+The comments of the thread are shown
 </label>
 
 <label>
@@ -537,7 +537,7 @@ The comment, author and rating is shown for each comment
 
 <label>
 <input type="checkbox" name="" value="">
-Links on the thread list go to the thread detail (thread title and read more 
+Links on the thread list go to the thread detail (thread title and read more
 link) for each thread
 </label>
 
@@ -585,7 +585,7 @@ Entered form data is secured (no SQL injection is possible)
 <div class="column unitx5">
 
 <p>
-Implement the rating system. Each comment can be rated up or down by the user. 
+Implement the rating system. Each comment can be rated up or down by the user.
 The clickable rating sums (plus and minus) are shown in the upper right corner
 of each comment.
 </p>
@@ -607,6 +607,7 @@ Note: Do not waste time, make it simple and functional.
 <div class="column unitx2">
 
 <fieldset>
+<legend>Rating</legend>
 <label>
 <input type="checkbox" name="" value="">
 User can vote up or down for every comment (thread is also a comment)
@@ -619,20 +620,39 @@ Working rating buttons implemented on home page, thread list and detail page
 
 <label>
 <input type="checkbox" name="" value="">
-<em>Bonus 1:</em> The user can only vote once for each comment
-</label>
-
-<label>
-<input type="checkbox" name="" value="">
-<em>Bonus 2:</em> Ajax
-</label>
-
-<label>
-<input type="checkbox" name="" value="">
 The given template is used
 </label>
 </fieldset>
 
+
+<fieldset>
+<legend>Bonus 1</legend>
+<!-- TODO: Update the rating form with new marking scheme -->
+<label>
+<input type="checkbox" name="" value="">
+The user can only vote once for each comment
+</label>
+<label>
+<input type="checkbox" name="" value="">
+The buttons will disappear after voting for a comment
+</label>
+</fieldset>
+
+<fieldset>
+<legend>Bonus 2 (Ajax)</legend>
+<!-- TODO: Update the rating form with new marking scheme -->
+<label>
+<input type="checkbox" name="" value="">
+The page does not scroll to the top on voting
+</label>
+<label>
+<input type="checkbox" name="" value="">
+The rating request is sent by ajax
+</label>
+<label>
+<input type="checkbox" name="" value="">
+Rating will update the sum and the sum is correct
+</label>
 </div>
 
 <hr/>
@@ -645,8 +665,8 @@ The given template is used
 <div class="column unitx5">
 
 <p>
-Create a form which allows to assign tags to a thread on the 
-<a href="templates/thread_detail.html">tread detail page</a>. 
+Create a form which allows to assign tags to a thread on the
+<a href="templates/thread_detail.html">tread detail page</a>.
 Show the tag list below the thread name.
 </p>
 
@@ -669,7 +689,7 @@ Show the tag list below the thread name.
 
 <fieldset>
 <legend>Layout / Design</legend>
-
+<!-- TODO: Update the rating form with new marking scheme -->
 <label>
 <input type="checkbox" name="" value="">
 The tag list is shown underneath the thread name
@@ -677,7 +697,7 @@ The tag list is shown underneath the thread name
 
 <label>
 <input type="checkbox" name="" value="">
-The bootstrap CSS "label" Class is used for the tags displayed
+The bootstrap CSS "label" class is used for the tags displayed
 </label>
 
 <label>
@@ -690,7 +710,7 @@ The tag form is displayed
 
 <fieldset>
 <legend>Tag form</legend>
-
+<!-- TODO: Update the rating form with new marking scheme -->
 <label>
 <input type="checkbox" name="" value="">
 A new tag is added in the database when it does not exist (no duplicates)
@@ -698,7 +718,17 @@ A new tag is added in the database when it does not exist (no duplicates)
 
 <label>
 <input type="checkbox" name="" value="">
-New tags are connected to the thread
+A tag is converted to lowercase
+</label>
+
+<label>
+<input type="checkbox" name="" value="">
+Multiple tags can be linked to the thread
+</label>
+
+<label>
+<input type="checkbox" name="" value="">
+Existing tags are connected to the thread
 </label>
 
 <label>
@@ -720,7 +750,7 @@ A success message is shown after the tag has been added
 <div class="column unitx5">
 
 <p>
-Create an option to search by keywords on the 
+Create an option to search by keywords on the
 <a href="templates/thread_list.html">thread list page</a>.
 </p>
 
