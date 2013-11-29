@@ -16,7 +16,7 @@
             <url url="http://downloads.sourceforge.net/project/xampp/XAMPP%20Windows/1.8.2/xampp-win32-1.8.2-2-VC9-installer.exe" />
             <url url="http://ftp.mozilla.org/pub/mozilla.org/firefox/releases/25.0.1/win32/en-US/Firefox%20Setup%2025.0.1.exe" />
             <url url="https://addons.mozilla.org/firefox/downloads/latest/1843/addon-1843-latest.xpi" />
-            <url url="https://dl.google.com/update2/installers/ChromeSetup.exe" />
+            <url url="https://dl.google.com/update2/installers/ChromeStandaloneSetup.exe" />
             <url url="http://dev.mysql.com/get/Downloads/Connector-J/mysql-connector-java-5.1.27.zip" />
             <url url="http://mirror.switch.ch/mirror/apache/dist/tomcat/tomcat-7/v7.0.47/bin/apache-tomcat-7.0.47-fulldocs.tar.gz" />
         </get>
