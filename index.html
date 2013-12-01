@@ -234,7 +234,7 @@ This page provides a list containing threads created by users. The search by nam
 </li>
 <li>
 <a href="templates/thread_detail.html">Thread details</a><br/>
-This page is used to display the thread selected, including the name, the tags, comments left by users and a system rating for each one. The page also contains a form to leave a comment.
+This page is used to display the thread selected, including the name, discription, tags, comments left by users and a system rating for each one. The page also contains a form to leave a comment.
 </li>
 </ul>
 </div>
@@ -384,7 +384,7 @@ The hottest thread is selected by the maximum total rating
 
 <label>
 <input type="checkbox" name="" value="">
-The thread name, rating and comment is shown
+The thread name, rating and description is shown
 </label>
 
 <label>
@@ -414,14 +414,14 @@ in the “templates” folder.
     <li>
         The thread list shows all questions as seen on the <a href="templates/thread_list.html">thread list page</a>
         <ul>
-            <li>Each thread comment is cropped to a maximum of 200 chars</li>
+            <li>Each thread description is cropped to a maximum of 200 chars</li>
             <li>Thread are ordered chronological (newest first)</li>
         </ul>
     </li>
     <li>
         A form to add a thread is shown on the <a href="templates/thread_list.html">thread list page</a>
         <ul>
-            <li>Add the form with the fields name, email, thread name, comment</li>
+            <li>Add the form with the fields name, email, thread name and description</li>
             <li>Check the format of the email address.</li>
             <li>Handle errors that may occur (blank, invalid email, etc.).</li>
         </ul>
@@ -437,12 +437,23 @@ in the “templates” folder.
 
 <label>
 <input type="checkbox" name="" value="">
-The thread details are shown for each thread (thread name, rating and comment)
+Threads are ordererd chronological (newest first)
 </label>
 
 <label>
 <input type="checkbox" name="" value="">
-Each thread comment is cropped to a maxium of 200 chars
+The thread details are shown for each thread (thread name, rating and description)
+</label>
+
+<label>
+<input type="checkbox" name="" value="">
+Links on the thread list go to the thread detail (thread title and read more
+link) for each thread
+</label>
+
+<label>
+<input type="checkbox" name="" value="">
+Each thread description is cropped to a maxium of 200 chars
 </label>
 
 <label>
@@ -458,12 +469,12 @@ The prepared <a href="templates/thread_list.html">thread list template</a> is us
 
 <label>
 <input type="checkbox" name="" value="">
-A form to add a thread is shown on the <a href="templates/thread_list.html">thread list page</a> (with email, thread name and comment)
+A form to add a thread is shown on the <a href="templates/thread_list.html">thread list page</a> (with email, thread name and description)
 </label>
 
 <label>
 <input type="checkbox" name="" value="">
-The form to add a thread works (comment is saved correctly)
+The form to add a thread works (thread is saved correctly)
 </label>
 
 <label>
@@ -473,7 +484,21 @@ Form errors are handled (blank, email format, etc.)
 
 <label>
 <input type="checkbox" name="" value="">
+Entered data does not get lost when an error occurs
+</label>
+
+<label>
+<input type="checkbox" name="" value="">
 Entered form data is secured (no SQL injection is possible)
+</label>
+
+<label>
+<input type="checkbox" name="" value="">
+No script injection is possible (e.g. JavaScript code in description)
+</label>
+
+<input type="checkbox" name="" value="">
+A success message is shown after the thread has been added
 </label>
 </fieldset>
 
@@ -497,7 +522,7 @@ Implement the thread detail pages with the database from
     <li>
         The detail is shown on the <a href="templates/thread_detail.html">thread detail page</a>
         <ul>
-            <li>The first comment is the thread</li>
+            <li>The first comment is the thread itself</li>
             <li>All comments assigned to a thread are shown</li>
             <li>Comments are ordered the way the were posted (oldest first)</li>
             <li>Add links to the detail page on the thread list created in <a href="#task3">Task 3</a></li>
@@ -522,7 +547,7 @@ Implement the thread detail pages with the database from
 
 <label>
 <input type="checkbox" name="" value="">
-The thread detail is shown (thread name, email, full comment)
+The thread detail is shown (thread name, email and the full description)
 </label>
 
 <label>
@@ -532,13 +557,12 @@ The comments of the thread are shown
 
 <label>
 <input type="checkbox" name="" value="">
-The comment, author and rating is shown for each comment
+Comments are ordererd chronological (oldest first)
 </label>
 
 <label>
 <input type="checkbox" name="" value="">
-Links on the thread list go to the thread detail (thread title and read more
-link) for each thread
+The comment, author and rating is shown for each comment
 </label>
 
 <label>
@@ -569,7 +593,21 @@ Form errors are handled (blank, email format, etc.)
 
 <label>
 <input type="checkbox" name="" value="">
+Entered data does not get lost when an error occurs
+</label>
+
+<label>
+<input type="checkbox" name="" value="">
 Entered form data is secured (no SQL injection is possible)
+</label>
+
+<label>
+<input type="checkbox" name="" value="">
+No script injection is possible (e.g. JavaScript code in comment)
+</label>
+
+<input type="checkbox" name="" value="">
+A success message is shown after the comment has been added
 </label>
 </fieldset>
 
@@ -585,13 +623,13 @@ Entered form data is secured (no SQL injection is possible)
 <div class="column unitx5">
 
 <p>
-Implement the rating system. Each comment can be rated up or down by the user.
+Implement the rating system. Each thread / comment can be rated up or down by the user.
 The clickable rating sums (plus and minus) are shown in the upper right corner
-of each comment.
+of each thread / comment.
 </p>
 
 <ul>
-    <li>You should finish the <a href="#task3">task 3</a> before you can start with this task.</li>
+    <li>You should finish the <a href="#task3">task 3</a> and <a href="#task4">task 4</a> before you can start with this task.</li>
     <li>Implement the rating system on the <a href="templates/thread_detail.html">thread detail page</a></li>
     <li><em>Bonus 1:</em> The user can only vote once for each comment (sessions)</li>
     <li><em>Bonus 2:</em> Ajax!</li>
@@ -615,7 +653,16 @@ User can vote up or down for every comment (thread is also a comment)
 
 <label>
 <input type="checkbox" name="" value="">
+Rating sums are calculated and displayed correctly
+</label>
+
+<label>
+<input type="checkbox" name="" value="">
 Working rating buttons implemented on home page, thread list and detail page
+</label>
+
+<input type="checkbox" name="" value="">
+A success message is shown after the comment has been added
 </label>
 
 <label>
@@ -626,11 +673,14 @@ The given template is used
 
 
 <fieldset>
-<legend>Bonus 1</legend>
-<!-- TODO: Update the rating form with new marking scheme -->
+<legend>Bonus 1 (one vote per user)</legend>
 <label>
 <input type="checkbox" name="" value="">
-The user can only vote once for each comment
+The user can only vote once for each comment (thread is also a comment)
+</label>
+<label>
+<input type="checkbox" name="" value="">
+The session ID is used for the check (not the IP)
 </label>
 <label>
 <input type="checkbox" name="" value="">
@@ -640,7 +690,6 @@ The buttons will disappear after voting for a comment
 
 <fieldset>
 <legend>Bonus 2 (Ajax)</legend>
-<!-- TODO: Update the rating form with new marking scheme -->
 <label>
 <input type="checkbox" name="" value="">
 The page does not scroll to the top on voting
@@ -651,7 +700,15 @@ The rating request is sent by ajax
 </label>
 <label>
 <input type="checkbox" name="" value="">
-Rating will update the sum and the sum is correct
+The ajax call to the server is a POST method
+</label>
+<label>
+<input type="checkbox" name="" value="">
+Multiple sending of vote is prevented (JavaScript implementation)
+</label>
+<label>
+<input type="checkbox" name="" value="">
+Rating will update the sum and the sum is correct (using JavaScript, no page reload)
 </label>
 </div>
 
@@ -689,7 +746,6 @@ Show the tag list below the thread name.
 
 <fieldset>
 <legend>Layout / Design</legend>
-<!-- TODO: Update the rating form with new marking scheme -->
 <label>
 <input type="checkbox" name="" value="">
 The tag list is shown underneath the thread name
@@ -697,12 +753,12 @@ The tag list is shown underneath the thread name
 
 <label>
 <input type="checkbox" name="" value="">
-The bootstrap CSS "label" class is used for the tags displayed
+Each tag is a link to the search form (the search page does not have to exist)
 </label>
 
 <label>
 <input type="checkbox" name="" value="">
-The tag form is displayed
+The bootstrap CSS "label" class is used for the tags displayed
 </label>
 </fieldset>
 
@@ -710,15 +766,19 @@ The tag form is displayed
 
 <fieldset>
 <legend>Tag form</legend>
-<!-- TODO: Update the rating form with new marking scheme -->
 <label>
 <input type="checkbox" name="" value="">
-A new tag is added in the database when it does not exist (no duplicates)
+The tag form is displayed
 </label>
 
 <label>
 <input type="checkbox" name="" value="">
-A tag is converted to lowercase
+Tags are only added in the database when they do not exist (no duplicates)
+</label>
+
+<label>
+<input type="checkbox" name="" value="">
+Tags are converted to lowercase
 </label>
 
 <label>
@@ -766,12 +826,37 @@ The search form is displayed
 
 <label>
 <input type="checkbox" name="" value="">
-The keywords search the thread name and comment
+The entered search string does not get lost after submitting the form
+</label>
+
+<label>
+<input type="checkbox" name="" value="">
+Entered keywords are splitted by space characters and searched for separately
+</label>
+
+<label>
+<input type="checkbox" name="" value="">
+All keywords have to be matched
+</label>
+
+<label>
+<input type="checkbox" name="" value="">
+The keywords search the thread name and description
+</label>
+
+<label>
+<input type="checkbox" name="" value="">
+Keywords also search for tags connected with the thread
 </label>
 
 <label>
 <input type="checkbox" name="" value="">
 The results on the <a href="templates/thread_list.html">thread list page</a> are filtered by keyword
+</label>
+
+<label>
+<input type="checkbox" name="" value="">
+A message is shown if no results are found
 </label>
 </fieldset>
 
