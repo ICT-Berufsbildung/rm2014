@@ -35,7 +35,7 @@
             <arg value="--silent" />
         </exec>
         <zip destfile="software.zip">
-            <zipfileset dir="software/" />
+            <zipfileset dir="software/" excludes=".gitkeep" />
         </zip>
     </target>
 
@@ -47,7 +47,7 @@
             <url url="http://download.jetbrains.com/webide/PhpStorm-7.0.exe" />
         </get>
         <zip destfile="ide.zip">
-            <zipfileset dir="ide/" />
+            <zipfileset dir="ide/" excludes=".gitkeep" />
         </zip>
     </target>
 
@@ -78,7 +78,7 @@
         <untar src="documentation/Java_SE7.tgz" dest="documentation/zeal-20131109/docsets" compression="bzip2" />
         <untar src="documentation/Bootstrap_2.tgz" dest="documentation/zeal-20131109/docsets" compression="bzip2" />
         <zip destfile="documentation.zip">
-            <zipfileset dir="documentation/" excludes="zeal-20131109.zip,PHP.tgz,MySQL.tgz,jQuery.tgz,Java_SE7.tgz,Bootstrap_2.tgz" />
+            <zipfileset dir="documentation/" excludes="zeal-20131109.zip,PHP.tgz,MySQL.tgz,jQuery.tgz,Java_SE7.tgz,Bootstrap_2.tgz,.gitkeep" />
         </zip>
     </target>
 
