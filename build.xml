@@ -72,11 +72,11 @@
             <arg value="--silent" />
         </exec>
         <unzip src="documentation/zeal-20131109.zip" dest="documentation" />
-        <untar src="documentation/PHP.tgz" dest="documentation/zeal-20131109/docsets" compression="bzip2" />
-        <untar src="documentation/MySQL.tgz" dest="documentation/zeal-20131109/docsets" compression="bzip2" />
-        <untar src="documentation/jQuery.tgz" dest="documentation/zeal-20131109/docsets" compression="bzip2" />
-        <untar src="documentation/Java_SE7.tgz" dest="documentation/zeal-20131109/docsets" compression="bzip2" />
-        <untar src="documentation/Bootstrap_2.tgz" dest="documentation/zeal-20131109/docsets" compression="bzip2" />
+        <untar src="documentation/PHP.tgz" dest="documentation/zeal-20131109/docsets" compression="gzip" />
+        <untar src="documentation/MySQL.tgz" dest="documentation/zeal-20131109/docsets" compression="gzip" />
+        <untar src="documentation/jQuery.tgz" dest="documentation/zeal-20131109/docsets" compression="gzip" />
+        <untar src="documentation/Java_SE7.tgz" dest="documentation/zeal-20131109/docsets" compression="gzip" />
+        <untar src="documentation/Bootstrap_2.tgz" dest="documentation/zeal-20131109/docsets" compression="gzip" />
         <zip destfile="documentation.zip">
             <zipfileset dir="documentation/" excludes="zeal-20131109.zip,PHP.tgz,MySQL.tgz,jQuery.tgz,Java_SE7.tgz,Bootstrap_2.tgz,.gitkeep,zeal-20131109/docsets/PHP.docset/Contents/Resources/Documents/varuste.net/**,zeal-20131109/docsets/PHP.docset/Contents/Resources/Documents/www.varuste.net/**" />
         </zip>
